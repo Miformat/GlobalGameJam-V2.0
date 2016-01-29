@@ -53,6 +53,7 @@ public class Invocation : MonoBehaviour {
 
 
             GameObject go = Instantiate(invocPrefab, spawnPosition, Quaternion.identity) as GameObject;
+			go.AddComponent<curveScript>();
 
             Vector3 center = go.transform.position;
 
@@ -85,7 +86,8 @@ public class Invocation : MonoBehaviour {
         {
             if (col.tag == SpellManager.Instance.GetPrefab(type).tag)
             {
-                Destroy(col.gameObject);
+				col.GetComponent<curveScript>().goDepop();
+                //Destroy(col.gameObject);
             }
         }
     }
