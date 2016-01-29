@@ -11,9 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float zoomLevel = 2.0F;
     private Vector3 moveDirection = Vector3.zero;
 	Vector3 direction;
-
-    bool animationPlaying = false;
-
+    
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
