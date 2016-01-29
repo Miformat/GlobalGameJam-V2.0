@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class SpellManager : MonoBehaviour {
 
     static SpellManager instance;
+	public AnimationCurve popCurve;
+	public AnimationCurve depopCurve;
 
     public static SpellManager Instance
     {
