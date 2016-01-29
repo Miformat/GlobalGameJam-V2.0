@@ -9,7 +9,6 @@ public class NoteManager : MonoBehaviour {
 	public float timer;
 	string keyPressed;
 	int index;
-	string firstElem;
 	int sizeTab;
 
 	string[][] dico;
@@ -29,7 +28,6 @@ public class NoteManager : MonoBehaviour {
 	void Update () 
 	{
 		timer -= Time.deltaTime;
-		firstElem = noteSheet [0];
 		if ((timer < 0 && sizeTab > 0)|| sizeTab == maxSize)
 		{
 			executePartition();
@@ -49,12 +47,6 @@ public class NoteManager : MonoBehaviour {
 
 	void executePartition()
 	{
-		int nb = 0;
-		/*foreach (string str in noteSheet) 
-		{
-			Debug.Log("Elem " + nb + " : " + str);
-			nb++;
-		}*/
 		bool match;
 		foreach (string[] str in dico) 
 		{
