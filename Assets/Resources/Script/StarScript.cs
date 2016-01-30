@@ -19,7 +19,7 @@ public class StarScript : MonoBehaviour {
 	{
 		colorToTake = sprRend.color;
 		if (isActive){colorToTake.a = 1;}
-		else{colorToTake.a = 0.4f;}
+		else{colorToTake.a = 0.3f;}
 		sprRend.color = colorToTake;
 	}
 }

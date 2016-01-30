@@ -32,7 +32,7 @@ public class DicoSong : MonoBehaviour {
             new string[]{"q", "q", "z" , "z" , "destroyArbres"},
             new string[]{"z", "q", "z" , "d" , "buissons"},
             new string[]{"d", "z", "q" , "z" , "destroybuissons"},
-            new string[]{"z", "z", "s" , "d" , "constellations"},
+            new string[]{"z", "q", "s" , "d" , "constellations"},
             new string[]{"z", "s", "z" , "z" , "feuArtifice"},
             new string[]{"q", "s", "d" , "s" , "meteo4"},
             new string[]{"q", "d", "d" , "z" , "couleur"},
