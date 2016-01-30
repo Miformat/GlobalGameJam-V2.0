@@ -26,6 +26,8 @@ public class NoteManager : MonoBehaviour {
 	int index;
 	int sizeTab;
 
+    Animator animator;
+
 	string[][] dico;
 	PartitionManager partition;
 
@@ -40,7 +42,9 @@ public class NoteManager : MonoBehaviour {
         Debug.Log(GameObject.FindGameObjectWithTag("Dico").GetComponent<DicoSong>().tabSong);
 
 		partition = GameObject.FindGameObjectWithTag ("Partition").GetComponent<PartitionManager>();
-	}
+
+        animator = FindObjectOfType<PlayerController>().animator;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -48,14 +52,18 @@ public class NoteManager : MonoBehaviour {
 		timer -= Time.deltaTime;
 		if ((timer < 0 && sizeTab > 0)|| sizeTab == maxSize)
 		{
-			executePartition();
+            animator.SetLayerWeight(1, 0);
+            animator.SetBool("sing", false);
+            executePartition();
 		}
 		if (Input.anyKeyDown) 
 		{
 			keyPressed = Input.inputString;
 			if (keyPressed != "" && keyPressed != null)
-			{
-				timer = reactionTime;
+            {
+                animator.SetLayerWeight(1, 1);
+                animator.SetBool("sing", true);
+                timer = reactionTime;
 				noteSheet[index] = keyPressed;
 				index++;
 				sizeTab++;

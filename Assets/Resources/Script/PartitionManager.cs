@@ -186,7 +186,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Nuit()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SetDay(false);
     }
 
     private void RemplirEau()
@@ -206,7 +206,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Jour()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SetDay(true);
     }
 
     private void Assecher()
@@ -251,7 +251,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void MeteoClaire()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SwitchWeather(MeteoManager.Weather.CLEAR);
     }
 
     private void Boussole()
@@ -261,12 +261,12 @@ public class PartitionManager : MonoBehaviour {
 
     private void Neige()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SwitchWeather(MeteoManager.Weather.SNOW);
     }
 
     private void Pluie()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SwitchWeather(MeteoManager.Weather.RAIN);
     }
 
     private void Couleur()

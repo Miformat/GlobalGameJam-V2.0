@@ -11,7 +11,16 @@ public class PlayerController : MonoBehaviour {
     public float zoomLevel = 2.0F;
     private Vector3 moveDirection = Vector3.zero;
 	Vector3 direction;
-    
+
+    bool isJumping = false;
+
+    [HideInInspector]public Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
@@ -27,14 +36,40 @@ public class PlayerController : MonoBehaviour {
         }*/
         
 		direction = Vector3.zero;
-		if (Input.GetMouseButton(0)){direction.z = 1;} //clic gauche
-		if (Input.GetMouseButton(1)){direction.z = -1;} //clic droit
-		if (Input.GetMouseButtonDown(2)){direction.y = jumpSpeed;} //clic middle
+		
+		if (Input.GetMouseButtonDown(2)){
+            direction.y = jumpSpeed;
+            animator.SetTrigger("jump");
+        } //clic middle
+
         if (controller.isGrounded)
         {
+            animator.SetTrigger("touchGround");
+
+            if (Input.GetMouseButton(0))
+            {
+                direction.z = 1;
+                animator.SetBool("run", true);
+            } //clic gauche
+            else
+        if (Input.GetMouseButton(1))
+            {
+                direction.z = -1;
+                animator.SetBool("run", true);
+            } //clic droit
+            else
+            {
+                animator.SetBool("run", false);
+            }
+
             moveDirection = direction;
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
+        }
+        else
+        {
+            animator.SetTrigger("fall");
+            animator.SetBool("run", false);
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
