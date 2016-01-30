@@ -20,9 +20,9 @@ public class SoundManager : MonoBehaviour {
     public AudioClip rockDestroy;
     public AudioClip treeDestroy;
     public AudioClip foliageDestroy;
-
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
 	
 	}
 	

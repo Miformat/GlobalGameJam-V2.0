@@ -44,6 +44,9 @@ public class MeteoManager : MonoBehaviour {
     public Color colorNightRain = new Color(1f, 0.86f, 0.82f);
     public Color colorNightSnow = new Color(1f, 0.86f, 0.82f);
 
+    GameObject rain;
+    GameObject snow;
+
     // Use this for initialization
     void Start () {
         currentWeather = Weather.CLEAR;
@@ -56,6 +59,17 @@ public class MeteoManager : MonoBehaviour {
         skybox.SetFloat("_NormalToRainSnow", 0f);
 
         mainLight = FindObjectOfType<Light>();
+
+        foreach (Material m in materials)
+        {
+            m.SetFloat("_Snow", 0f);
+        }
+
+        rain = GameObject.Find("PS_Rain");
+        snow = GameObject.Find("PS_Snowflakes");
+
+        rain.SetActive(false);
+        snow.SetActive(false);
     }
 
     /*void Update()
@@ -109,12 +123,18 @@ public class MeteoManager : MonoBehaviour {
         switch (currentWeather)
         {
             case Weather.CLEAR:
+                rain.SetActive(false);
+                snow.SetActive(false);
                 mainLight.color = day ? colorDay : colorNight;
                 break;
             case Weather.RAIN:
+                rain.SetActive(true);
+                snow.SetActive(false);
                 mainLight.color = day ? colorDayRain : colorNightRain;
                 break;
             case Weather.SNOW:
+                rain.SetActive(false);
+                snow.SetActive(true);
                 mainLight.color = day ? colorDaySnow : colorNightSnow;
                 break;
 
