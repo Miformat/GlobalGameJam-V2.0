@@ -29,9 +29,16 @@ public class SpellManager : MonoBehaviour {
         BUISSON,
         ROCK,
         TREE,
+<<<<<<< HEAD
         ARTIFICE,
         BUGS,
         OISEAUX,
+=======
+		ARTIFICE,
+		PAPILLON,
+		LUCIOLE,
+		OISEAUX,
+>>>>>>> 0944472976dced3fe66b2c7bdecabd34d8b45788
         ALL
     }
 
@@ -45,7 +52,14 @@ public class SpellManager : MonoBehaviour {
     public GameObject rockPrefab;
 
     public GameObject treePrefab;
+<<<<<<< HEAD
     public List<GameObject> treeModels;
+=======
+	public GameObject artificePrefab;
+	public GameObject papillonPrefab;
+	public GameObject luciolePrefab;
+	public GameObject birdPrefab;
+>>>>>>> 0944472976dced3fe66b2c7bdecabd34d8b45788
 
     public GameObject artificePrefab;
     public GameObject bugsPrefab;
@@ -78,8 +92,16 @@ public class SpellManager : MonoBehaviour {
 			case spellType.ARTIFICE:
                 tab[0] = artificePrefab;
 				break;
+<<<<<<< HEAD
 			case spellType.BUGS:
                 tab[0] = bugsPrefab;
+=======
+			case spellType.PAPILLON:
+				go = papillonPrefab;
+				break;
+			case spellType.LUCIOLE:
+				go = luciolePrefab;
+>>>>>>> 0944472976dced3fe66b2c7bdecabd34d8b45788
 				break;
 			case spellType.OISEAUX:
                 tab[0] = birdPrefab;

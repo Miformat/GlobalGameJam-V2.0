@@ -7,6 +7,9 @@ public class PartitionManager : MonoBehaviour {
 
     static PartitionManager instance;
 
+	GameObject[] constel;
+	Transform[] stars;
+
     public static PartitionManager Instance
     {
         get
@@ -35,7 +38,7 @@ public class PartitionManager : MonoBehaviour {
         constellations = new Dictionary<constellationType, List<string>>();
         
         InitConstellations();
-
+		constel = GameObject.FindGameObjectsWithTag("Const");
     }
     
     void InitConstellations()
@@ -85,18 +88,26 @@ public class PartitionManager : MonoBehaviour {
 
 	public void doAction(string song)
 	{
+		int IDCONST = 0;
+		int IDSTAR = 0;
 		switch (song) 
 		{
 		case "element":
+				IDCONST = 1;
+				IDSTAR = 1;
                 Element();
 			break;
 		case "plante":
+				IDCONST = 1;
+				IDSTAR = 2;
                 Plante();
 			break;
 		case "destroyplante":
                 DestroyPlante();
 			break;
 		case "plante2":
+				IDCONST = 1;
+				IDSTAR = 3;
                 PlanteDeux();
 			break;
 		case "destroyplante2":
@@ -106,13 +117,22 @@ public class PartitionManager : MonoBehaviour {
                 EmpreintesPlantes();
 			break;
 		case "petitRocher":
+				IDCONST = 1;
+				IDSTAR = 4;
                 PetitRocher();
 			break;
 		case "destroypetitRocher":
                 DestroyPetitRocher();
 			break;
 		case "papillon":
+				IDCONST = 1;
+				IDSTAR = 5;
                 Papillon();
+			break;
+		case "luciole":
+				IDCONST = 1;
+				IDSTAR = 6;
+				Luciole();
 			break;
 		case "ouvrir":
                 Ouvrir();
@@ -123,12 +143,16 @@ public class PartitionManager : MonoBehaviour {
 			Debug.Log("fermer");
 			break;
 		case "arbres":
+				IDCONST = 1;
+				IDSTAR = 7;
                 Arbres();
 			break;
 		case "destroyArbres":
                 DestroyArbres();
 			break;
 		case "buissons":
+				IDCONST = 1;
+				IDSTAR = 8;
                 Buissons();
 			break;
 		case "destroybuissons":
@@ -136,14 +160,12 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "constellations":
                 Constellations();
-			Debug.Log("constellations");
 			break;
 		case "feuArtifice":
                 FeuArtifice();
 			break;
 		case "meteo4":
                 MeteoQuatre();
-			Debug.Log("meteo4");
 			break;
 		case "couleur":
                 Couleur();
@@ -151,11 +173,9 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "pluie":
                 Pluie();
-			Debug.Log("pluie");
 			break;
 		case "neige":
                 Neige();
-			Debug.Log("neige");
 			break;
 		case "boussole":
                 Boussole();
@@ -163,11 +183,9 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "meteoClaire":
                 MeteoClaire();
-			Debug.Log("meteoClaire");
 			break;
 		case "voler":
                 Voler();
-			Debug.Log("voler");
 			break;
 		case "fleurir":
                 Fleurir();
@@ -182,6 +200,8 @@ public class PartitionManager : MonoBehaviour {
 			Debug.Log("eteindre");
 			break;
 		case "oiseaux":
+				IDCONST = 1;
+				IDSTAR = 9;
                 Oiseaux();
 			break;
 		case "allumer":
@@ -198,7 +218,6 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "jour":
                 Jour();
-			Debug.Log("jour");
 			break;
 		case "credit":
                 Credit();
@@ -218,11 +237,10 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "nuit":
                 Nuit();
-			Debug.Log("nuit");
 			break;
 		}
 
-        UnlockSong(song);
+        UnlockSong(song, IDCONST, IDSTAR);
 
 	}
 
@@ -328,7 +346,11 @@ public class PartitionManager : MonoBehaviour {
 
     private void Constellations()
     {
-        throw new NotImplementedException();
+		GameObject[] constel = GameObject.FindGameObjectsWithTag("Const");
+		foreach(GameObject go in constel)
+		{
+			go.GetComponent<ConstScript>().showLink();
+		}
     }
 
     private void DestroyBuissons()
@@ -358,8 +380,13 @@ public class PartitionManager : MonoBehaviour {
 
     private void Papillon()
     {
-		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.BUGS);
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.PAPILLON);
     }
+
+	private void Luciole()
+	{
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.LUCIOLE);
+	}
 
     private void DestroyPetitRocher()
     {
@@ -411,29 +438,77 @@ public class PartitionManager : MonoBehaviour {
         FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.ROCK);
     }
 
-    void UnlockSong(string song)
+    void UnlockSong(string song, int idConst, int idStar)
     {
-        if (!discoveredSongs.ContainsKey(song))
-        {
-            discoveredSongs[song] = true;
-            UpdateConstellations();
-        }
+		if (idConst > 0 && idStar > 0)
+		{
+			if (!discoveredSongs.ContainsKey(song))
+			{
+				discoveredSongs[song] = true;
+				activeConstellations(idConst, idStar);
+			}
+		}
     }
 
-    void UpdateConstellations()
+    void activeConstellations(int ConstID, int StarID)
     {
-
+		foreach(GameObject co in constel)
+		{
+			if (co.GetComponent<ConstScript>().ID == ConstID)
+			{
+				stars = co.GetComponentsInChildren<Transform>();
+				foreach(Transform st in stars)
+				{
+					if (st.tag == "Star" && st.GetComponent<StarScript>().ID == StarID)
+					{
+						st.GetComponent<StarScript>().isActive = true;
+						checkConst(ConstID);
+					}
+				}
+			}
+		}
     }
 
-    public List<bool> GetConstellation(constellationType type)
+	void checkConst(int ConstID)
+	{
+		bool allIsFound = true;
+		foreach(GameObject co in constel)
+		{
+			if (co.GetComponent<ConstScript>().ID == ConstID && co.GetComponent<ConstScript>().revealed == false)
+			{
+				stars = co.GetComponentsInChildren<Transform>();
+				foreach(Transform st in stars)
+				{
+					if (st.tag == "Star" && st.GetComponent<StarScript>().isActive == false)
+					{
+						allIsFound = false;
+					}
+				}
+				if (allIsFound)
+				{
+					co.GetComponent<ConstScript>().showLinkForever();
+				}
+			}
+		}
+	}
+
+	public bool GetConstellation(int ConstID, int StarID)
     {
-        List<bool> stars = new List<bool>();
-
-        foreach(string song in constellations[type])
-        {
-            stars.Add(discoveredSongs[song]);
-        }
-
-        return stars;
+		foreach(GameObject co in constel)
+		{
+			if (co.GetComponent<ConstScript>().ID == ConstID)
+			{
+				stars = co.GetComponentsInChildren<Transform>();
+				foreach(Transform st in stars)
+				{
+					if (st.GetComponent<StarScript>().ID == StarID)
+					{
+						if (st.GetComponent<StarScript>().isActive){return true;}
+						else{return false;}
+					}
+				}
+			}
+		}
+		return false;
     }
 }
