@@ -23,7 +23,8 @@ public class MeteoManager : MonoBehaviour {
         CLEAR,
         RAIN,
         SNOW,
-        SUNNY
+        SUNNY,
+        OTHER,
     }
 
     public Weather currentWeather;
