@@ -360,7 +360,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Couleur()
     {
-        throw new NotImplementedException();
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<colorScript> ().colorAll ();
     }
 
     private void MeteoQuatre()
