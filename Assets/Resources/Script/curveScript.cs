@@ -19,7 +19,7 @@ public class curveScript : MonoBehaviour {
 		depopCurve = GameObject.FindGameObjectWithTag ("Spell").GetComponent<SpellManager>().depopCurve;
 		Timer = 0;
 		scaleVect = Vector3.one;
-		if (this.gameObject.tag == "Bug" || this.gameObject.tag == "Bird"){isConcern = false;}
+		if (this.gameObject.tag == "Butterfly" || this.gameObject.tag == "Dragonfly"|| this.gameObject.tag == "Bird"){isConcern = false;}
 	}
 	
 	// Update is called once per frame
