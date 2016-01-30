@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour {
         gravity /= Time.deltaTime;
 
         originGravity = gravity;
+
+        speed = walkSpeed;
     }
 
     void Update()
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour {
         {
             fly = false;
             gravity = originGravity;
+            speed = walkSpeed;
         }
 
         controller = GetComponent<CharacterController>();
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour {
         if (controller.isGrounded)
         {
             model.transform.localEulerAngles = new Vector3(0, 0, 0);
+
 
             /*if (Input.GetMouseButtonDown(2))
             {
