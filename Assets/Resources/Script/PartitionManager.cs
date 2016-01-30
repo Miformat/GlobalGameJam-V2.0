@@ -60,6 +60,9 @@ public class PartitionManager : MonoBehaviour {
 		case "papillon":
                 Papillon();
 			break;
+		case "luciole":
+				Luciole();
+			break;
 		case "ouvrir":
                 Ouvrir();
 			Debug.Log("ouvrir");
@@ -301,8 +304,13 @@ public class PartitionManager : MonoBehaviour {
 
     private void Papillon()
     {
-		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.BUGS);
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.PAPILLON);
     }
+
+	private void Luciole()
+	{
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.LUCIOLE);
+	}
 
     private void DestroyPetitRocher()
     {

@@ -17,13 +17,14 @@ public class DicoSong : MonoBehaviour {
             new string[]{"z", "z", "element"},
             new string[]{"z", "q", "plante"},
             new string[]{"z", "d", "plante2"},
-             new string[]{"q", "z", "destroyplante"},
+            new string[]{"q", "z", "destroyplante"},
             new string[]{"d", "z", "destroyplante2"},
 
             new string[]{"z", "s", "s" , "empreintesPlantes"},
             new string[]{"q", "z", "s" , "petitRocher"},
             new string[]{"q", "z", "s" , "destroypetitRocher"},
             new string[]{"q", "d", "q" , "papillon"},
+			new string[]{"d", "q", "d" , "luciole"},
             new string[]{"s", "d", "q" , "ouvrir"},
             new string[]{"d", "q", "s" , "fermer"},
 

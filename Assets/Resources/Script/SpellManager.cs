@@ -30,7 +30,8 @@ public class SpellManager : MonoBehaviour {
         ROCK,
         TREE,
 		ARTIFICE,
-		BUGS,
+		PAPILLON,
+		LUCIOLE,
 		OISEAUX,
         ALL
     }
@@ -42,7 +43,8 @@ public class SpellManager : MonoBehaviour {
     public GameObject rockPrefab;
     public GameObject treePrefab;
 	public GameObject artificePrefab;
-	public GameObject bugsPrefab;
+	public GameObject papillonPrefab;
+	public GameObject luciolePrefab;
 	public GameObject birdPrefab;
 
     public GameObject GetPrefab(spellType type)
@@ -72,8 +74,11 @@ public class SpellManager : MonoBehaviour {
 			case spellType.ARTIFICE:
 				go = artificePrefab;
 				break;
-			case spellType.BUGS:
-				go = bugsPrefab;
+			case spellType.PAPILLON:
+				go = papillonPrefab;
+				break;
+			case spellType.LUCIOLE:
+				go = luciolePrefab;
 				break;
 			case spellType.OISEAUX:
 				go = birdPrefab;
