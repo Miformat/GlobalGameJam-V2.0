@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class PartitionManager : MonoBehaviour {
@@ -13,21 +14,74 @@ public class PartitionManager : MonoBehaviour {
             return instance;
         }
     }
+    
+    public enum constellationType
+    {
+        PONCTUELS,
+        EFFETS,
+        INTERACTIONS,
+        AMBIANCE,
+        GAMEPLAY
+    }
+
+    public Dictionary<string, bool> discoveredSongs;
+
+    public Dictionary<constellationType, List<string>> constellations;
 
     void Awake()
     {
         instance = this;
-    }
+        discoveredSongs = new Dictionary<string, bool>();
+        constellations = new Dictionary<constellationType, List<string>>();
+        
+        InitConstellations();
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+    
+    void InitConstellations()
+    {
+        constellations[constellationType.PONCTUELS] = new List<string>();
+        constellations[constellationType.PONCTUELS].Add("element");
+        constellations[constellationType.PONCTUELS].Add("plante");
+        constellations[constellationType.PONCTUELS].Add("plante2");
+        constellations[constellationType.PONCTUELS].Add("petitRocher");
+        constellations[constellationType.PONCTUELS].Add("papillon");
+        constellations[constellationType.PONCTUELS].Add("arbres");
+        constellations[constellationType.PONCTUELS].Add("buissons");
+        constellations[constellationType.PONCTUELS].Add("oiseaux");
+
+        constellations[constellationType.EFFETS] = new List<string>();
+        constellations[constellationType.EFFETS].Add("empreintesPlantes");
+        constellations[constellationType.EFFETS].Add("feuArtifice");
+        constellations[constellationType.EFFETS].Add("couleur");
+        constellations[constellationType.EFFETS].Add("feuillir");
+        constellations[constellationType.EFFETS].Add("fleurir");
+        constellations[constellationType.EFFETS].Add("effacer");
+
+        constellations[constellationType.INTERACTIONS] = new List<string>();
+        constellations[constellationType.INTERACTIONS].Add("ouvrir");
+        constellations[constellationType.INTERACTIONS].Add("fermer");
+        constellations[constellationType.INTERACTIONS].Add("eteindre");
+        constellations[constellationType.INTERACTIONS].Add("allumer");
+        constellations[constellationType.INTERACTIONS].Add("remplirEau");
+        constellations[constellationType.INTERACTIONS].Add("assecher");
+        constellations[constellationType.INTERACTIONS].Add("retirerGrosRocher");
+
+        constellations[constellationType.AMBIANCE] = new List<string>();
+        constellations[constellationType.AMBIANCE].Add("meteo4");
+        constellations[constellationType.AMBIANCE].Add("pluie");
+        constellations[constellationType.AMBIANCE].Add("neige");
+        constellations[constellationType.AMBIANCE].Add("auroreBoreale");
+        constellations[constellationType.AMBIANCE].Add("meteoClaire");
+        constellations[constellationType.AMBIANCE].Add("jour");
+        constellations[constellationType.AMBIANCE].Add("nuit");
+
+        constellations[constellationType.GAMEPLAY] = new List<string>();
+        constellations[constellationType.GAMEPLAY].Add("constellations");
+        constellations[constellationType.GAMEPLAY].Add("boussole");
+        constellations[constellationType.GAMEPLAY].Add("voler");
+        constellations[constellationType.GAMEPLAY].Add("credit");
+    }
 
 	public void doAction(string song)
 	{
@@ -170,6 +224,9 @@ public class PartitionManager : MonoBehaviour {
 			Debug.Log("nuit");
 			break;
 		}
+
+        UnlockSong(song);
+
 	}
 
     private void Nuit()
@@ -360,5 +417,31 @@ public class PartitionManager : MonoBehaviour {
     void PetitRocher()
     {
         FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.ROCK);
+    }
+
+    void UnlockSong(string song)
+    {
+        if (!discoveredSongs.ContainsKey(song))
+        {
+            discoveredSongs[song] = true;
+            UpdateConstellations();
+        }
+    }
+
+    void UpdateConstellations()
+    {
+
+    }
+
+    public List<bool> GetConstellation(constellationType type)
+    {
+        List<bool> stars = new List<bool>();
+
+        foreach(string song in constellations[type])
+        {
+            stars.Add(discoveredSongs[song]);
+        }
+
+        return stars;
     }
 }
