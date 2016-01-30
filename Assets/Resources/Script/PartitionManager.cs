@@ -244,7 +244,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Voler()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<PlayerController>().Fly();
     }
 
     private void MeteoClaire()
@@ -274,7 +274,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void MeteoQuatre()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SwitchWeather(MeteoManager.Weather.OTHER);
     }
 
     private void FeuArtifice()
