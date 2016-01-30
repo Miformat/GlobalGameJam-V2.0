@@ -9,7 +9,9 @@ public class Interactable : MonoBehaviour {
     public bool lightIsLighted = false;
 
     public bool openableIsOpen = false;
-    
+
+    public bool isDead = true;
+
     // Use this for initialization
     void Start () {
     }
@@ -35,6 +37,9 @@ public class Interactable : MonoBehaviour {
                 break;
             case "InteractableRock":
                 StartCoroutine(Rock(b));
+                break;
+            case "DeadTree":
+                StartCoroutine(Leaves(b));
                 break;
         }
     }
@@ -122,5 +127,20 @@ public class Interactable : MonoBehaviour {
             gameObject.SetActive(true);
         }
         yield return null;
+    }
+
+    IEnumerator Leaves(bool b)
+    {
+        if (b == true && isDead == true)
+        {
+            while (GetComponent<Renderer>().material.GetFloat("_Leaves") < 1f)
+            {
+                GetComponent<Renderer>().material.SetFloat("_Leaves", GetComponent<Renderer>().material.GetFloat("_Leaves") + 0.01f);
+                yield return new WaitForSeconds(0.01f);
+
+            }
+
+            isDead = false;
+        }
     }
 }

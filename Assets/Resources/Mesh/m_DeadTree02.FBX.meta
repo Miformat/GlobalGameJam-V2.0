@@ -10,6 +10,8 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Loft001
+    4300002: Plane001
+    4300004: DeadTree02
   materials:
     importMaterials: 0
     materialName: 0

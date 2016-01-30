@@ -90,7 +90,7 @@ public class Invocation : MonoBehaviour {
                 model = SpellManager.Instance.GetBuissonModel();
                 break;
             case SpellManager.spellType.ROCK:
-                
+                model = SpellManager.Instance.GetRockModel();
                 break;
             case SpellManager.spellType.TREE:
                 model = SpellManager.Instance.GetTreeModel();
