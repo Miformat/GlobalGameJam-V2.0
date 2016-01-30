@@ -23,13 +23,17 @@ public class SpellManager : MonoBehaviour {
 
     public enum spellType
     {
+		ELEMENT,
         ROCK,
         TREE,
+		ARTIFICE,
         ALL
     }
 
+	public GameObject elementPrefab;
     public GameObject rockPrefab;
     public GameObject treePrefab;
+	public GameObject artificePrefab;
 
     public GameObject GetPrefab(spellType type)
     {
@@ -37,12 +41,18 @@ public class SpellManager : MonoBehaviour {
 
         switch (type)
         {
+			case spellType.ELEMENT:
+				go = elementPrefab;
+				break;
             case spellType.ROCK:
                 go = rockPrefab;
                 break;
             case spellType.TREE:
                 go = treePrefab;
                 break;
+			case spellType.ARTIFICE:
+				go = artificePrefab;
+				break;
         }
 
         return go;

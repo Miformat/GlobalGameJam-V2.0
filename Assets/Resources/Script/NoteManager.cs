@@ -38,9 +38,6 @@ public class NoteManager : MonoBehaviour {
 		index = 0;
 		noteSheet = new string[maxSize];
 		dico = GameObject.FindGameObjectWithTag ("Dico").GetComponent<DicoSong>().tabSong;
-
-        Debug.Log(GameObject.FindGameObjectWithTag("Dico").GetComponent<DicoSong>().tabSong);
-
 		partition = GameObject.FindGameObjectWithTag ("Partition").GetComponent<PartitionManager>();
 
         animator = FindObjectOfType<PlayerController>().animator;

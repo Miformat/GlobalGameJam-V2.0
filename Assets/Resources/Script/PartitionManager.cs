@@ -34,7 +34,6 @@ public class PartitionManager : MonoBehaviour {
 		switch (song) 
 		{
 		case "element":
-		        Debug.Log("element");
                 Element();
 			break;
 		case "plante":
@@ -99,7 +98,6 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "feuArtifice":
                 FeuArtifice();
-			Debug.Log("feuArtifice");
 			break;
 		case "meteo4":
                 MeteoQuatre();
@@ -281,7 +279,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void FeuArtifice()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.ARTIFICE);
     }
 
     private void Constellations()
@@ -326,7 +324,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void EmpreintesPlantes()
     {
-        throw new NotImplementedException();
+		GameObject.FindGameObjectWithTag ("FlowerTrail").GetComponent<FlowerTrailScript> ().startTrail ();
     }
 
     private void DestroyPlanteDeux()
@@ -351,7 +349,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Element()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.ELEMENT);
     }
 
     void Effacer()
