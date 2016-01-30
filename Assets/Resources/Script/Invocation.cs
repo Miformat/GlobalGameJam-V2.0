@@ -16,7 +16,7 @@ public class Invocation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.A))
+        /*if (Input.GetKeyDown(KeyCode.A))
         {
             Invoc(SpellManager.spellType.ROCK);
         }
@@ -31,10 +31,10 @@ public class Invocation : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.D))
         {
             Uninvoc(SpellManager.spellType.TREE);
-        }
+        }*/
     }
 
-    void Invoc(SpellManager.spellType type)
+    public void Invoc(SpellManager.spellType type)
     {
         GameObject invocPrefab = SpellManager.Instance.GetPrefab(type);
 
@@ -76,7 +76,7 @@ public class Invocation : MonoBehaviour {
         }
     }
 
-    void Uninvoc(SpellManager.spellType type)
+    public void Uninvoc(SpellManager.spellType type)
     {
         Vector3 center = transform.position;
 
@@ -84,10 +84,12 @@ public class Invocation : MonoBehaviour {
         
         foreach (Collider col in hitColliders)
         {
-            if (col.tag == SpellManager.Instance.GetPrefab(type).tag)
+            if (type == SpellManager.spellType.ALL || col.tag == SpellManager.Instance.GetPrefab(type).tag)
             {
-				col.GetComponent<curveScript>().goDepop();
-                //Destroy(col.gameObject);
+                if((col.tag != "Player" && col.tag != "Ground")){
+                    Debug.Log(col.tag);
+                    col.GetComponent<curveScript>().goDepop();
+                }
             }
         }
     }

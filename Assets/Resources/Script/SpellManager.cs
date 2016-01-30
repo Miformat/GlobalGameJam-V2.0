@@ -24,7 +24,8 @@ public class SpellManager : MonoBehaviour {
     public enum spellType
     {
         ROCK,
-        TREE
+        TREE,
+        ALL
     }
 
     public GameObject rockPrefab;
