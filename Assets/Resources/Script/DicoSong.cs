@@ -25,7 +25,7 @@ public class DicoSong : MonoBehaviour {
             new string[]{"s", "z", "q" , "destroypetitRocher"},
             new string[]{"q", "d", "q" , "papillon"},
 			new string[]{"d", "q", "d" , "luciole"},
-            new string[]{"s", "d", "q" , "ouvrir"},
+            new string[]{"s", "q", "d" , "ouvrir"},
             new string[]{"d", "q", "s" , "fermer"},
 
             new string[]{"z", "z", "q" , "q" , "arbres"},
