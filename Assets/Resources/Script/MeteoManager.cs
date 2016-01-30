@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MeteoManager : MonoBehaviour {
 
@@ -26,6 +27,8 @@ public class MeteoManager : MonoBehaviour {
         SUNNY,
         OTHER,
     }
+
+    public List<Material> materials;
 
     public Weather currentWeather;
     public bool day;
@@ -120,6 +123,8 @@ public class MeteoManager : MonoBehaviour {
 
     IEnumerator ChangeSkyboxValue(string paramName, float value)
     {
+        bool snowing = paramName == "_RainToSnow";
+
         float actualValue = skybox.GetFloat(paramName);
         
         if (actualValue > value)
@@ -128,6 +133,15 @@ public class MeteoManager : MonoBehaviour {
             {
                 actualValue -= 0.1f;
                 skybox.SetFloat(paramName, actualValue);
+                
+                if (snowing)
+                {
+                    foreach (Material m in materials)
+                    {
+                        m.SetFloat("_Snow", actualValue);
+                    }
+                }
+
                 yield return new WaitForSeconds(0.01f);
             }
         }
@@ -137,6 +151,16 @@ public class MeteoManager : MonoBehaviour {
             {
                 actualValue += 0.1f;
                 skybox.SetFloat(paramName, actualValue);
+
+                
+                if (snowing)
+                {
+                    foreach (Material m in materials)
+                    {
+                        m.SetFloat("_Snow", actualValue);
+                    }
+                }
+
                 yield return new WaitForSeconds(0.01f);
             }
         }
