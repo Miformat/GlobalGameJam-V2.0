@@ -139,13 +139,11 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 3;
 				IDSTAR = 1;
                 Ouvrir();
-			Debug.Log("ouvrir");
 			break;
 		case "fermer":
 				IDCONST = 3;
 				IDSTAR = 2;
                 Fermer();
-			Debug.Log("fermer");
 			break;
 		case "arbres":
 				IDCONST = 1;
@@ -226,7 +224,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 3;
 				IDSTAR = 3;
                 Eteindre();
-			Debug.Log("eteindre");
 			break;
 		case "oiseaux":
 				IDCONST = 1;
@@ -237,7 +234,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 3;
 				IDSTAR = 4;
                 Allumer();
-			Debug.Log("allumer");
 			break;
 		case "auroreBoreale":
 				IDCONST = 4;
@@ -249,7 +245,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 3;
 				IDSTAR = 5;
                 Assecher();
-			Debug.Log("assecher");
 			break;
 		case "jour":
 				IDCONST = 4;
@@ -271,7 +266,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 3;
 				IDSTAR = 6;
                 RemplirEau();
-			Debug.Log("remplirEau");
 			break;
 		case "nuit":
 				IDCONST = 4;
@@ -291,7 +285,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void RemplirEau()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, true);
     }
 
     private void Credit()
@@ -306,7 +300,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Assecher()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, false);
     }
 
     private void AuroreBoreale()
@@ -316,7 +310,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Allumer()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.LIGHT, true);
     }
 
     private void Oiseaux()
@@ -326,7 +320,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Eteindre()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.LIGHT, false);
     }
 
     private void Feuillir()
@@ -405,12 +399,12 @@ public class PartitionManager : MonoBehaviour {
 
     private void Fermer()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.OPEN, false);
     }
 
     private void Ouvrir()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.OPEN, true);
     }
 
     private void Papillon()

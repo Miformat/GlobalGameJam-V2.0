@@ -134,7 +134,7 @@ public class Invocation : MonoBehaviour {
             if (type == SpellManager.spellType.ALL || col.tag == SpellManager.Instance.GetPrefab(type)[0].tag)
             {
                 if((col.tag != "Player" && col.tag != "Ground")){
-                    Debug.Log(col.tag);
+                    //Debug.Log(col.tag);
                     col.GetComponent<curveScript>().goDepop();
                 }
             }
