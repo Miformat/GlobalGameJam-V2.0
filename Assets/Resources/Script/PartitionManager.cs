@@ -33,7 +33,7 @@ public class PartitionManager : MonoBehaviour {
         instance = this;
         discoveredSongs = new Dictionary<string, bool>();
         constellations = new Dictionary<constellationType, List<string>>();
-
+        
         InitConstellations();
 
     }
@@ -413,7 +413,7 @@ public class PartitionManager : MonoBehaviour {
 
     void UnlockSong(string song)
     {
-        if (!discoveredSongs[song])
+        if (!discoveredSongs.ContainsKey(song))
         {
             discoveredSongs[song] = true;
             UpdateConstellations();
