@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     public float flyinHeight = 20f;
     public float flyinSpeed = 12f;
     float flyBegining = 0;
-    bool fly = false;
+    public bool fly = false;
 
     CharacterController controller;
 
@@ -141,6 +141,6 @@ public class PlayerController : MonoBehaviour {
         gravity = 0;
         speed = flyinSpeed;
 
-        Debug.Log("stop flying");
+        //Debug.Log("stop flying");
     }
 }

@@ -25,6 +25,14 @@ public class NoteManager : MonoBehaviour {
 	string keyPressed;
 	int index;
 	int sizeTab;
+	GameObject player;
+
+	GameObject notez;
+	GameObject noteq;
+	GameObject notes;
+	GameObject noted;
+	GameObject note1;
+	GameObject note2;
 
     Animator animator;
 
@@ -33,6 +41,13 @@ public class NoteManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		notez = Resources.Load ("Prefab/Note-z") as GameObject;
+		noteq = Resources.Load ("Prefab/Note-q") as GameObject;
+		notes = Resources.Load ("Prefab/Note-s") as GameObject;
+		noted = Resources.Load ("Prefab/Note-d") as GameObject;
+		note1 = Resources.Load ("Prefab/Note-1") as GameObject;
+		note2 = Resources.Load ("Prefab/Note-2") as GameObject;
+		player = GameObject.FindGameObjectWithTag ("Player");
 		sizeTab = 0;
 		timer = 0;
 		index = 0;
@@ -64,8 +79,35 @@ public class NoteManager : MonoBehaviour {
 				noteSheet[index] = keyPressed;
 				index++;
 				sizeTab++;
+				showNote(keyPressed);
 			}
 		}
+	}
+
+	void showNote(string str)
+	{
+		int rnd = Random.Range (0, 2);
+		GameObject toPop;
+		switch (str)
+		{
+		case "z":
+			toPop = notez;
+			break;
+		case "q":
+			toPop = noteq;
+			break;
+		case "s":
+			toPop = notes;
+			break;
+		case "d":
+			toPop = noted;
+			break;
+		default:
+			if (rnd == 0){toPop = note1;}
+			else{toPop = note2;}
+			break;
+		}
+		Instantiate (toPop, player.transform.position, Quaternion.identity);
 	}
 
 	void executePartition()

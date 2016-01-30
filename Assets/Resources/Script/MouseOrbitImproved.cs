@@ -13,6 +13,9 @@ public class MouseOrbitImproved : MonoBehaviour
     public float yMinLimit = -20f;
     public float yMaxLimit = 80f;
 
+	GameObject player;
+	Vector3 startpos;
+	bool goFly;
     /*public float distanceMin = .5f;
     public float distanceMax = 15f;*/
 
@@ -22,11 +25,14 @@ public class MouseOrbitImproved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		startpos = this.gameObject.transform.position;
+		player = GameObject.FindGameObjectWithTag ("Player");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Vector3 angles = transform.eulerAngles;
         //x = angles.y;
         y = angles.x;
+		goFly = false;
     }
     
     void LateUpdate()
@@ -38,7 +44,13 @@ public class MouseOrbitImproved : MonoBehaviour
         }
 
         y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
-        
+
+		if (player.GetComponent<PlayerController>().fly == false && goFly){transform.localPosition = startpos; goFly = false;}
+
+		if (y > 40 && player.GetComponent<PlayerController>().fly == false){y = 40;}
+		else if (y < -20 && player.GetComponent<PlayerController>().fly == false){y = -20;}
+
+
         y = ClampAngle(y, yMinLimit, yMaxLimit);
         Quaternion rotation = Quaternion.Euler(y, 0, 0);
 
@@ -48,7 +60,7 @@ public class MouseOrbitImproved : MonoBehaviour
         Vector3 position = rotation * negDistance;
 
         transform.localRotation = rotation;
-        transform.localPosition = position;
+		if (player.GetComponent<PlayerController>().fly){transform.localPosition = position; goFly = true;}
     }
 
     public static float ClampAngle(float angle, float min, float max)
