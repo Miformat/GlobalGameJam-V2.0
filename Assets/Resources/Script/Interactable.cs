@@ -46,17 +46,13 @@ public class Interactable : MonoBehaviour {
 
     IEnumerator Open(bool b)
     {
-        if(openableIsOpen != b)
+        if (b == false)
         {
-            if (openableIsOpen)
-            {
-                //on ferme
-            }
-            else
-            {
-                //on ouvre
-            }
-            lightIsLighted = b;
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
         yield return null;
     }
