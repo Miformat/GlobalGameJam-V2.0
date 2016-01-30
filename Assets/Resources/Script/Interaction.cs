@@ -11,7 +11,8 @@ public class Interaction : MonoBehaviour {
         OPEN,
         LIGHT,
         WATER,
-        BIGROCK
+        BIGROCK,
+        LEAVES
     }
 
     public static Dictionary<interactionType, string> tags;
@@ -23,6 +24,7 @@ public class Interaction : MonoBehaviour {
         tags[interactionType.LIGHT] = "Lightable";
         tags[interactionType.WATER] = "InteractableWater";
         tags[interactionType.BIGROCK] = "InteractableRock";
+        tags[interactionType.LEAVES] = "DeadTree";
     }
 	
 	// Update is called once per frame

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: abea266b63a20684b9e541245c77cd09
-timeCreated: 1454160319
+guid: 3f99b2475940dc744aa0333a14b2ff9c
+timeCreated: 1454174575
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -9,9 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Loft001
-    4300002: Plane001
-    4300004: DeadTree02
+    4300000: Box002
   materials:
     importMaterials: 0
     materialName: 0
@@ -36,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1.5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -325,7 +325,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Feuillir()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.LEAVES, true);
     }
 
     private void Fleurir()
