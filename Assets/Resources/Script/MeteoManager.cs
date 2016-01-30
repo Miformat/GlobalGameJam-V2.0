@@ -30,10 +30,27 @@ public class MeteoManager : MonoBehaviour {
     public Weather currentWeather;
     public bool day;
 
+    Material skybox;
+
     // Use this for initialization
     void Start () {
         currentWeather = Weather.CLEAR;
         day = true;
+
+        skybox = RenderSettings.skybox;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SetDay(!day);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SwitchWeather(Weather.RAIN);
+        }
     }
 
     public void SwitchWeather(Weather w)
@@ -44,6 +61,16 @@ public class MeteoManager : MonoBehaviour {
     public void SetDay(bool b)
     {
         day = b;
+        skybox.SetFloat("_DayToNight",1f);
     }
+
+    /*IEnumerator ChangeSkyboxValue(string paramName, float value)
+    {
+        float actualValue = skybox.GetFloat(paramName);
+        while (actualValue>value ? skybox.GetFloat(paramName) > value : skybox.GetFloat(paramName) < value)
+        {
+
+        }
+    }*/
 
 }

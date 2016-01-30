@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float zoomLevel = 2.0F;
     private Vector3 moveDirection = Vector3.zero;
 	Vector3 direction;
-
-    bool isJumping = false;
-
+    
     [HideInInspector]public Animator animator;
 
     public float flyDuration = 3f;
