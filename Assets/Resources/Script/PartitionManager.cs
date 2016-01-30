@@ -68,7 +68,6 @@ public class PartitionManager : MonoBehaviour {
         constellations[constellationType.INTERACTIONS].Add("allumer");
         constellations[constellationType.INTERACTIONS].Add("remplirEau");
         constellations[constellationType.INTERACTIONS].Add("assecher");
-        constellations[constellationType.INTERACTIONS].Add("retirerGrosRocher");
 
         constellations[constellationType.AMBIANCE] = new List<string>();
         constellations[constellationType.AMBIANCE].Add("meteo4");
@@ -114,6 +113,8 @@ public class PartitionManager : MonoBehaviour {
                 DestroyPlanteDeux();
 			break;
 		case "empreintesPlantes":
+				IDCONST = 2;
+				IDSTAR = 1;
                 EmpreintesPlantes();
 			break;
 		case "petitRocher":
@@ -135,10 +136,14 @@ public class PartitionManager : MonoBehaviour {
 				Luciole();
 			break;
 		case "ouvrir":
+				IDCONST = 3;
+				IDSTAR = 1;
                 Ouvrir();
 			Debug.Log("ouvrir");
 			break;
 		case "fermer":
+				IDCONST = 3;
+				IDSTAR = 2;
                 Fermer();
 			Debug.Log("fermer");
 			break;
@@ -159,43 +164,67 @@ public class PartitionManager : MonoBehaviour {
                 DestroyBuissons();
 			break;
 		case "constellations":
+				IDCONST = 5;
+				IDSTAR = 1;
                 Constellations();
 			break;
 		case "feuArtifice":
+				IDCONST = 2;
+				IDSTAR = 2;
                 FeuArtifice();
 			break;
 		case "meteo4":
+				IDCONST = 4;
+				IDSTAR = 1;
                 MeteoQuatre();
 			break;
 		case "couleur":
+				IDCONST = 2;
+				IDSTAR = 3;
                 Couleur();
 			Debug.Log("couleur");
 			break;
 		case "pluie":
+				IDCONST = 4;
+				IDSTAR = 2;
                 Pluie();
 			break;
 		case "neige":
+				IDCONST = 4;
+				IDSTAR = 3;
                 Neige();
 			break;
 		case "boussole":
+				IDCONST = 5;
+				IDSTAR = 2;
                 Boussole();
 			Debug.Log("boussole");
 			break;
 		case "meteoClaire":
+				IDCONST = 4;
+				IDSTAR = 4;
                 MeteoClaire();
 			break;
 		case "voler":
+				IDCONST = 5;
+				IDSTAR = 3;
                 Voler();
 			break;
 		case "fleurir":
+				IDCONST = 2;
+				IDSTAR = 4;
                 Fleurir();
 			Debug.Log("fleurir");
 			break;
 		case "feuillir":
+				IDCONST = 2;
+				IDSTAR = 5;
                 Feuillir();
 			Debug.Log("feuillir");
 			break;
 		case "eteindre":
+				IDCONST = 3;
+				IDSTAR = 3;
                 Eteindre();
 			Debug.Log("eteindre");
 			break;
@@ -205,37 +234,48 @@ public class PartitionManager : MonoBehaviour {
                 Oiseaux();
 			break;
 		case "allumer":
+				IDCONST = 3;
+				IDSTAR = 4;
                 Allumer();
 			Debug.Log("allumer");
 			break;
 		case "auroreBoreale":
+				IDCONST = 4;
+				IDSTAR = 5;
                 AuroreBoreale();
 			Debug.Log("auroreBoreale");
 			break;
 		case "assecher":
+				IDCONST = 3;
+				IDSTAR = 5;
                 Assecher();
 			Debug.Log("assecher");
 			break;
 		case "jour":
+				IDCONST = 4;
+				IDSTAR = 6;
                 Jour();
 			break;
 		case "credit":
+				IDCONST = 5;
+				IDSTAR = 4;
                 Credit();
 			Debug.Log("credit");
 			break;
-		case "retirerGrosRocher":
-                RetirerGrosRocher();
-			Debug.Log("retirerGrosRocher");
-			break;
 		case "effacer":
+				IDCONST = 2;
+				IDSTAR = 6;
                 Effacer();
-			Debug.Log("effacer");
 			break;
 		case "remplirEau":
+				IDCONST = 3;
+				IDSTAR = 6;
                 RemplirEau();
 			Debug.Log("remplirEau");
 			break;
 		case "nuit":
+				IDCONST = 4;
+				IDSTAR = 7;
                 Nuit();
 			break;
 		}
@@ -250,11 +290,6 @@ public class PartitionManager : MonoBehaviour {
     }
 
     private void RemplirEau()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void RetirerGrosRocher()
     {
         throw new NotImplementedException();
     }

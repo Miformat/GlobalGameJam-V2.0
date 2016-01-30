@@ -52,7 +52,6 @@ public class DicoSong : MonoBehaviour {
             new string[]{"z", "s", "q" , "z" , "s" , "d" , "assecher"},
             new string[]{"q", "s", "d" , "q" , "s" , "d" , "jour"},
             new string[]{"q", "s", "d" , "d" , "s" , "q" , "credit"},
-            new string[]{"s", "s", "z" , "z" , "q" , "q" , "retirerGrosRocher"},
             new string[]{"s", "s", "q" , "d" , "s" , "s" , "effacer"},
             new string[]{"d", "s", "z" , "q" , "s" , "z" , "remplirEau"},
             new string[]{"d", "s", "q" , "d" , "s" , "q" , "nuit"},
