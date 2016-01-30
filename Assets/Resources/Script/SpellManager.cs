@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class SpellManager : MonoBehaviour {
 
     static SpellManager instance;
-	public AnimationCurve popCurve;
-	public AnimationCurve depopCurve;
+    public AnimationCurve popCurve;
+    public AnimationCurve depopCurve;
 
     public static SpellManager Instance
     {
@@ -23,68 +23,86 @@ public class SpellManager : MonoBehaviour {
 
     public enum spellType
     {
-		ELEMENT,
-		PLANTE,
-		PLANTE2,
-		BUISSON,
+        ELEMENT,
+        PLANTE,
+        PLANTE2,
+        BUISSON,
         ROCK,
         TREE,
+        BUGS,
+        OISEAUX,
 		ARTIFICE,
 		PAPILLON,
 		LUCIOLE,
-		OISEAUX,
         ALL
     }
 
-	public GameObject elementPrefab;
-	public GameObject plantePrefab;
-	public GameObject plante2Prefab;
-	public GameObject buissonPrefab;
+    public GameObject elementPrefab;
+    public GameObject plantePrefab;
+    public GameObject plante2Prefab;
+
+    public GameObject buissonPrefab;
+    public List<GameObject> buissonModels;
+
     public GameObject rockPrefab;
+
     public GameObject treePrefab;
+
+    public List<GameObject> treeModels;
+
 	public GameObject artificePrefab;
 	public GameObject papillonPrefab;
 	public GameObject luciolePrefab;
 	public GameObject birdPrefab;
 
-    public GameObject GetPrefab(spellType type)
+    public GameObject[] GetPrefab(spellType type)
     {
-        GameObject go = null;
+        GameObject[] tab = new GameObject[2];
 
         switch (type)
         {
 			case spellType.ELEMENT:
-				go = elementPrefab;
+                tab[0] = elementPrefab;
 				break;
 			case spellType.PLANTE:
-				go = plantePrefab;
+                tab[0] = plantePrefab;
 				break;
 			case spellType.PLANTE2:
-				go = plante2Prefab;
+                tab[0] = plante2Prefab;
 				break;
 			case spellType.BUISSON:
-				go = buissonPrefab;
+                tab[0] = buissonPrefab;
 				break;
             case spellType.ROCK:
-                go = rockPrefab;
+                tab[0] = rockPrefab;
                 break;
             case spellType.TREE:
-                go = treePrefab;
+                tab[0] = treePrefab;
                 break;
 			case spellType.ARTIFICE:
-				go = artificePrefab;
+                tab[0] = artificePrefab;
 				break;
 			case spellType.PAPILLON:
-				go = papillonPrefab;
+                tab[0] = papillonPrefab;
 				break;
 			case spellType.LUCIOLE:
-				go = luciolePrefab;
+                tab[0] = luciolePrefab;
 				break;
 			case spellType.OISEAUX:
-				go = birdPrefab;
+                tab[0] = birdPrefab;
 				break;
         }
 
-        return go;
+        return tab;
+    }
+
+    public GameObject GetTreeModel()
+    {
+        return treeModels[Random.Range(0, treeModels.Count)];
+    }
+
+    public GameObject GetBuissonModel()
+    {
+        return buissonModels[Random.Range(0, buissonModels.Count)];
     }
 }

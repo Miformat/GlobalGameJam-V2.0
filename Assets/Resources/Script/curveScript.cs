@@ -38,7 +38,7 @@ public class curveScript : MonoBehaviour {
 			else
 			{
 				scaleVect.x = 0f + depopCurve.Evaluate (Timer);
-				scaleVect.y = 0f - depopCurve.Evaluate(Timer);
+				scaleVect.y = 0f + depopCurve.Evaluate(Timer);
 				scaleVect.z = 0f + depopCurve.Evaluate(Timer);
 				transform.localScale = scaleVect;
 				if (Timer > 1){Destroy(this.gameObject);}
