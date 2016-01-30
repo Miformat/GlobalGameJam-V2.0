@@ -38,35 +38,27 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "plante":
                 Plante();
-		Debug.Log("plante");
 			break;
 		case "destroyplante":
                 DestroyPlante();
-		Debug.Log("destroyplante");
 			break;
 		case "plante2":
                 PlanteDeux();
-			Debug.Log("plante2");
 			break;
 		case "destroyplante2":
                 DestroyPlanteDeux();
-			Debug.Log("destroyplante2");
 			break;
 		case "empreintesPlantes":
                 EmpreintesPlantes();
-			Debug.Log("empreintesPlantes");
 			break;
 		case "petitRocher":
                 PetitRocher();
-			Debug.Log("petitRocher");
 			break;
 		case "destroypetitRocher":
                 DestroyPetitRocher();
-			Debug.Log("destroypetitRocher");
 			break;
 		case "papillon":
                 Papillon();
-			Debug.Log("papillon");
 			break;
 		case "ouvrir":
                 Ouvrir();
@@ -78,19 +70,15 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "arbres":
                 Arbres();
-			Debug.Log("arbres");
 			break;
 		case "destroyArbres":
                 DestroyArbres();
-			Debug.Log("destroyArbres");
 			break;
 		case "buissons":
                 Buissons();
-			Debug.Log("buissons");
 			break;
 		case "destroybuissons":
                 DestroyBuissons();
-			Debug.Log("destroybuissons");
 			break;
 		case "constellations":
                 Constellations();
@@ -141,7 +129,6 @@ public class PartitionManager : MonoBehaviour {
 			break;
 		case "oiseaux":
                 Oiseaux();
-			Debug.Log("oiseaux");
 			break;
 		case "allumer":
                 Allumer();
@@ -224,7 +211,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Oiseaux()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.OISEAUX);
     }
 
     private void Eteindre()
@@ -289,12 +276,12 @@ public class PartitionManager : MonoBehaviour {
 
     private void DestroyBuissons()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Uninvoc(SpellManager.spellType.BUISSON);
     }
 
     private void Buissons()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.BUISSON);
     }
 
     private void DestroyArbres()
@@ -314,7 +301,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Papillon()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.BUGS);
     }
 
     private void DestroyPetitRocher()
@@ -329,22 +316,22 @@ public class PartitionManager : MonoBehaviour {
 
     private void DestroyPlanteDeux()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Uninvoc(SpellManager.spellType.PLANTE2);
     }
 
     private void PlanteDeux()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.PLANTE2);
     }
 
     private void DestroyPlante()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Uninvoc(SpellManager.spellType.PLANTE);
     }
 
     private void Plante()
     {
-        throw new NotImplementedException();
+		FindObjectOfType<Invocation>().Invoc(SpellManager.spellType.PLANTE);
     }
 
     private void Element()

@@ -24,16 +24,26 @@ public class SpellManager : MonoBehaviour {
     public enum spellType
     {
 		ELEMENT,
+		PLANTE,
+		PLANTE2,
+		BUISSON,
         ROCK,
         TREE,
 		ARTIFICE,
+		BUGS,
+		OISEAUX,
         ALL
     }
 
 	public GameObject elementPrefab;
+	public GameObject plantePrefab;
+	public GameObject plante2Prefab;
+	public GameObject buissonPrefab;
     public GameObject rockPrefab;
     public GameObject treePrefab;
 	public GameObject artificePrefab;
+	public GameObject bugsPrefab;
+	public GameObject birdPrefab;
 
     public GameObject GetPrefab(spellType type)
     {
@@ -44,6 +54,15 @@ public class SpellManager : MonoBehaviour {
 			case spellType.ELEMENT:
 				go = elementPrefab;
 				break;
+			case spellType.PLANTE:
+				go = plantePrefab;
+				break;
+			case spellType.PLANTE2:
+				go = plante2Prefab;
+				break;
+			case spellType.BUISSON:
+				go = buissonPrefab;
+				break;
             case spellType.ROCK:
                 go = rockPrefab;
                 break;
@@ -52,6 +71,12 @@ public class SpellManager : MonoBehaviour {
                 break;
 			case spellType.ARTIFICE:
 				go = artificePrefab;
+				break;
+			case spellType.BUGS:
+				go = bugsPrefab;
+				break;
+			case spellType.OISEAUX:
+				go = birdPrefab;
 				break;
         }
 
