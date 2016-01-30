@@ -6,7 +6,7 @@ public class DicoSong : MonoBehaviour {
 	public string[][] tabSong;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		tabSong = new string[][]
 		{
 			//new string[]{note, note......, CODE},
@@ -32,7 +32,7 @@ public class DicoSong : MonoBehaviour {
             new string[]{"z", "q", "z" , "d" , "buissons"},
             new string[]{"d", "z", "q" , "z" , "destroybuissons"},
             new string[]{"z", "z", "s" , "d" , "constellations"},
-            new string[]{"z", "s", "z" , "z" , "feuxArtifice"},
+            new string[]{"z", "s", "z" , "z" , "feuArtifice"},
             new string[]{"q", "s", "d" , "s" , "meteo4"},
             new string[]{"q", "d", "d" , "z" , "couleur"},
             new string[]{"s", "q", "s" , "d" , "pluie"},

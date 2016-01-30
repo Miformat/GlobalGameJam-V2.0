@@ -3,7 +3,22 @@ using System.Collections;
 
 public class NoteManager : MonoBehaviour {
 
-	public string[] noteSheet;
+    static NoteManager instance;
+
+    public static NoteManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    public string[] noteSheet;
 	public float reactionTime;
 	public int maxSize;
 	public float timer;
@@ -21,6 +36,9 @@ public class NoteManager : MonoBehaviour {
 		index = 0;
 		noteSheet = new string[maxSize];
 		dico = GameObject.FindGameObjectWithTag ("Dico").GetComponent<DicoSong>().tabSong;
+
+        Debug.Log(GameObject.FindGameObjectWithTag("Dico").GetComponent<DicoSong>().tabSong);
+
 		partition = GameObject.FindGameObjectWithTag ("Partition").GetComponent<PartitionManager>();
 	}
 	
