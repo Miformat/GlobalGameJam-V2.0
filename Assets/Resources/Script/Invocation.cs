@@ -125,6 +125,8 @@ public class Invocation : MonoBehaviour {
 
     public void Uninvoc(SpellManager.spellType type)
     {
+        AudioClip aC = null;
+        
         Vector3 center = transform.position;
 
         Collider[] hitColliders = Physics.OverlapSphere(center, invocationRadius+1f);
@@ -133,8 +135,26 @@ public class Invocation : MonoBehaviour {
         {
             if (type == SpellManager.spellType.ALL || col.tag == SpellManager.Instance.GetPrefab(type)[0].tag)
             {
-                if((col.tag != "Player" && col.tag != "Ground")){
+                if((col.tag != "Player" && col.tag != "Ground") && col.GetComponent<curveScript>())
+                {
+                    switch (col.tag)
+                    {
+                        case "Rock":
+                            aC = SoundManager.Instance.rockDestroy;
+                            break;
+                        case "Tree":
+                            aC = SoundManager.Instance.treeDestroy;
+                            break;
+                        case "Buisson":
+                            aC = SoundManager.Instance.foliageDestroy;
+                            break;
+                    }
                     //Debug.Log(col.tag);
+                    if (aC)
+                    {
+                        AudioSource.PlayClipAtPoint(aC, col.transform.position);
+                    }
+
                     col.GetComponent<curveScript>().goDepop();
                 }
             }
