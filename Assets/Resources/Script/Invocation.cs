@@ -16,22 +16,7 @@ public class Invocation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*if (Input.GetKeyDown(KeyCode.A))
-        {
-            Invoc(SpellManager.spellType.ROCK);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            Uninvoc(SpellManager.spellType.ROCK);
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Invoc(SpellManager.spellType.TREE);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            Uninvoc(SpellManager.spellType.TREE);
-        }*/
+       
     }
 
     public void Invoc(SpellManager.spellType type)
