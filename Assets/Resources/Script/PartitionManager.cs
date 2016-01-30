@@ -233,12 +233,12 @@ public class PartitionManager : MonoBehaviour {
 
     private void RemplirEau()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, true);
     }
 
     private void RetirerGrosRocher()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.BIGROCK, false);
     }
 
     private void Credit()
@@ -253,7 +253,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Assecher()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, false);
     }
 
     private void AuroreBoreale()
@@ -263,7 +263,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Allumer()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.LIGHT, true);
     }
 
     private void Oiseaux()
@@ -273,7 +273,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Eteindre()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.LIGHT, false);
     }
 
     private void Feuillir()
@@ -348,12 +348,12 @@ public class PartitionManager : MonoBehaviour {
 
     private void Fermer()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.OPEN, false);
     }
 
     private void Ouvrir()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.OPEN, true);
     }
 
     private void Papillon()

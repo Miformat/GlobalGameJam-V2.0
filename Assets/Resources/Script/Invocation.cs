@@ -21,7 +21,9 @@ public class Invocation : MonoBehaviour {
 
     public void Invoc(SpellManager.spellType type)
     {
-        GameObject invocPrefab = SpellManager.Instance.GetPrefab(type);
+        GameObject[] tab = SpellManager.Instance.GetPrefab(type);
+
+        GameObject invocPrefab = tab[0];
 
         for (int i = 0; i < nbGeneration; i++)
         {
@@ -32,13 +34,21 @@ public class Invocation : MonoBehaviour {
             {
                 x = Random.Range(transform.position.x - invocationRadius, transform.position.x + invocationRadius);
                 z = Random.Range(transform.position.z - invocationRadius, transform.position.z + invocationRadius);
-                spawnPosition = new Vector3(x, invocPrefab.transform.localScale.y / 2, z);
+                spawnPosition = new Vector3(x, transform.position.y, z);
             }
             while (Vector3.Distance(spawnPosition,transform.position)< detectionRadius);
-
-
+            
             GameObject go = Instantiate(invocPrefab, spawnPosition, Quaternion.identity) as GameObject;
-			go.AddComponent<curveScript>();
+
+            /*if (tab[1])
+            {
+                GameObject model = Instantiate(tab[1], spawnPosition, Quaternion.identity) as GameObject;
+                model.transform.parent = go.transform;
+            }*/
+
+            CreateModel(type, go);
+
+            go.AddComponent<curveScript>();
 
             Vector3 center = go.transform.position;
 
@@ -61,6 +71,58 @@ public class Invocation : MonoBehaviour {
         }
     }
 
+    void CreateModel(SpellManager.spellType type, GameObject go)
+    {
+        GameObject model = null;
+
+        switch (type)
+        {
+            case SpellManager.spellType.ELEMENT:
+                
+                break;
+            case SpellManager.spellType.PLANTE:
+                
+                break;
+            case SpellManager.spellType.PLANTE2:
+                
+                break;
+            case SpellManager.spellType.BUISSON:
+                model = SpellManager.Instance.GetBuissonModel();
+                break;
+            case SpellManager.spellType.ROCK:
+                
+                break;
+            case SpellManager.spellType.TREE:
+                model = SpellManager.Instance.GetTreeModel();
+                break;
+            case SpellManager.spellType.ARTIFICE:
+                
+                break;
+            case SpellManager.spellType.BUGS:
+                
+                break;
+            case SpellManager.spellType.OISEAUX:
+                
+                break;
+        }
+
+        if (model)
+        {
+            model = Instantiate(model, go.transform.position, Quaternion.identity) as GameObject;
+            model.transform.parent = go.transform;
+
+            float randRotation = Random.Range(0f, 360f);
+
+            model.transform.localEulerAngles = new Vector3(model.transform.localEulerAngles.x, randRotation, model.transform.localEulerAngles.z);
+
+            float randSize = Random.Range(model.transform.localScale.x * 0.7f, model.transform.localScale.x * 1.5f);
+
+            model.transform.localScale = Vector3.one * randSize;
+                
+        }
+        
+    }
+
     public void Uninvoc(SpellManager.spellType type)
     {
         Vector3 center = transform.position;
@@ -69,7 +131,7 @@ public class Invocation : MonoBehaviour {
         
         foreach (Collider col in hitColliders)
         {
-            if (type == SpellManager.spellType.ALL || col.tag == SpellManager.Instance.GetPrefab(type).tag)
+            if (type == SpellManager.spellType.ALL || col.tag == SpellManager.Instance.GetPrefab(type)[0].tag)
             {
                 if((col.tag != "Player" && col.tag != "Ground")){
                     Debug.Log(col.tag);
