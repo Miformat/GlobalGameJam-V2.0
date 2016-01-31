@@ -32,16 +32,25 @@ public class TrackManager : MonoBehaviour {
 	public AudioClip[] aurore;
 
 	public AudioClip[] jour;
+    [HideInInspector]public bool isDay = true;
 	public AudioClip[] nuit;
 
 	public AudioClip[] meteo4;
-	public AudioClip[] meteoClair;
-	public AudioClip[] meteoNeige;
-	public AudioClip[] meteoPluie;
+    public AudioClip[] meteoClair;
+    public AudioClip[] meteoNeige;
+    public AudioClip[] meteoPluie;
 
-	public AudioClip[] vol;
+    [HideInInspector]
+    public MeteoManager.Weather meteo = MeteoManager.Weather.CLEAR;
+
+    public AudioClip[] vol;
+    [HideInInspector]
+    public bool isFlying;
 
 	Collider[] hitColliders;
+
+    public float trackDuration = 4.5f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -50,9 +59,9 @@ public class TrackManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		if (timer > 5) 
+		if (timer > trackDuration) 
 		{
-			timer = timer % 5;
+			timer = timer % trackDuration;
 			hitColliders = Physics.OverlapSphere(this.gameObject.transform.position, radius);
 			checkCol ();
 			playTrack();
@@ -104,5 +113,30 @@ public class TrackManager : MonoBehaviour {
 		if (foundDragonfly){AudioSource.PlayClipAtPoint(luciole[rnd], this.gameObject.transform.position);}
 		if (foundPlant1){AudioSource.PlayClipAtPoint(plant1[rnd], this.gameObject.transform.position);}
 		if (foundPlant2){AudioSource.PlayClipAtPoint(plant2[rnd], this.gameObject.transform.position);}
-	}
+        if (isFlying) { AudioSource.PlayClipAtPoint(vol[rnd], this.gameObject.transform.position); }
+        
+        if (isDay) {
+            AudioSource.PlayClipAtPoint(jour[rnd], this.gameObject.transform.position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(nuit[rnd], this.gameObject.transform.position);
+        }
+
+        switch (meteo)
+        {
+            case MeteoManager.Weather.CLEAR:
+                AudioSource.PlayClipAtPoint(meteoClair[rnd], this.gameObject.transform.position);
+                break;
+            case MeteoManager.Weather.RAIN:
+                AudioSource.PlayClipAtPoint(meteoPluie[rnd], this.gameObject.transform.position);
+                break;
+            case MeteoManager.Weather.SNOW:
+                AudioSource.PlayClipAtPoint(meteoNeige[rnd], this.gameObject.transform.position);
+                break;
+            case MeteoManager.Weather.OTHER:
+                AudioSource.PlayClipAtPoint(meteo4[rnd], this.gameObject.transform.position);
+                break;
+        }
+    }
 }

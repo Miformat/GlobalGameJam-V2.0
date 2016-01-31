@@ -47,6 +47,8 @@ public class MeteoManager : MonoBehaviour {
     GameObject rain;
     GameObject snow;
 
+    TrackManager tM;
+
     // Use this for initialization
     void Start () {
         currentWeather = Weather.CLEAR;
@@ -70,26 +72,15 @@ public class MeteoManager : MonoBehaviour {
 
         rain.SetActive(false);
         snow.SetActive(false);
+
+        tM = FindObjectOfType<TrackManager>();
     }
-
-    /*void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SetDay(!day);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SwitchWeather(Weather.RAIN);
-        }
-    }*/
 
     public void SwitchWeather(Weather w)
     {
         Weather oldWeather = currentWeather;
         currentWeather = w;
-
+        
         switch (currentWeather)
         {
             case Weather.CLEAR:
@@ -106,6 +97,8 @@ public class MeteoManager : MonoBehaviour {
                 break;
         }
 
+        tM.meteo = currentWeather;
+
         UpdateColor();
     }
 
@@ -116,6 +109,8 @@ public class MeteoManager : MonoBehaviour {
         StartCoroutine(ChangeSkyboxValue("_DayToNight", day ? 0f : 1f));
 
         UpdateColor();
+
+        tM.isDay = day;
     }
 
     void UpdateColor()

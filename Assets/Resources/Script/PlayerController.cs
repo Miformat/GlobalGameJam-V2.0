@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
 
     GameObject model;
 
+    TrackManager tM;
+
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour {
         originGravity = gravity;
 
         speed = walkSpeed;
+
+        tM = GetComponent<TrackManager>();
     }
 
     void Update()
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         if (gravity == 0 && Time.time - flyBegining > flyDuration)
         {
             fly = false;
+            tM.isFlying = false;
             gravity = originGravity;
             speed = walkSpeed;
         }
@@ -125,6 +130,7 @@ public class PlayerController : MonoBehaviour {
         float currentY = transform.position.y;
 
         fly = true;
+        tM.isFlying = true;
         animator.SetTrigger("jump");
 
         StartCoroutine(BeginFly(currentY));
