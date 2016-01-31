@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour {
     {
         gravity = -gravity;
 
-        Debug.Log("begin flying");
+        //Debug.Log("begin flying");
 
         while (transform.position.y - beginY < flyinHeight)
         {

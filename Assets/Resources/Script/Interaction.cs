@@ -45,7 +45,7 @@ public class Interaction : MonoBehaviour {
 
         foreach (Collider col in hitColliders)
         {
-            Debug.Log(col.tag + " | " + tags[type]);
+            //Debug.Log(col.tag + " | " + tags[type]);
             if(col.tag == tags[type])
             {
                 col.GetComponent<Interactable>().ChangeState(type, state);
