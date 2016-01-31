@@ -25,10 +25,12 @@ public class TrackManager : MonoBehaviour {
 	//public AudioClip[] plant3;
 	//bool foundPlant3;
 
-	public AudioClip[] empreinte;//play when active
-	public AudioClip[] credit;
-
+	public AudioClip[] empreinte;
+	[HideInInspector]public bool isTrail;
 	public AudioClip[] color;
+	[HideInInspector]public bool isColor;
+
+	public AudioClip[] credit;
 	public AudioClip[] aurore;
 
 	public AudioClip[] jour;
@@ -114,7 +116,11 @@ public class TrackManager : MonoBehaviour {
 		if (foundPlant1){AudioSource.PlayClipAtPoint(plant1[rnd], this.gameObject.transform.position);}
 		if (foundPlant2){AudioSource.PlayClipAtPoint(plant2[rnd], this.gameObject.transform.position);}
         if (isFlying) { AudioSource.PlayClipAtPoint(vol[rnd], this.gameObject.transform.position); }
-        
+
+		if (isTrail) { AudioSource.PlayClipAtPoint(empreinte[rnd], this.gameObject.transform.position); }
+		if (isColor) { AudioSource.PlayClipAtPoint(color[rnd], this.gameObject.transform.position); }
+		isColor = false;
+
         if (isDay) {
             AudioSource.PlayClipAtPoint(jour[rnd], this.gameObject.transform.position);
         }
