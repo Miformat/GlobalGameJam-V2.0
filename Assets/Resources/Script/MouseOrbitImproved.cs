@@ -25,7 +25,7 @@ public class MouseOrbitImproved : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		startpos = this.gameObject.transform.position;
+        startpos = this.gameObject.transform.localPosition;
 		player = GameObject.FindGameObjectWithTag ("Player");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -56,11 +56,20 @@ public class MouseOrbitImproved : MonoBehaviour
 
         //distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
 
+        //fp view if in cavern
+        /*RaycastHit hit;
+        if (Physics.Linecast(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position, out hit))
+        {
+        
+            transform.localPosition = Vector3.zero + Vector3.up * 4 + Vector3.forward; 
+        }*/
+
         Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
         Vector3 position = rotation * negDistance;
 
         transform.localRotation = rotation;
-		if (player.GetComponent<PlayerController>().fly){transform.localPosition = position; goFly = true;}
+
+        if (player.GetComponent<PlayerController>().fly){transform.localPosition = position; goFly = true;}
     }
 
     public static float ClampAngle(float angle, float min, float max)
