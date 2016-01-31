@@ -66,6 +66,7 @@ public class Invocation : MonoBehaviour {
 
             if (!canExist)
             {
+                Debug.Log("okokokokokkokokok");
                 Destroy(go);
             }
         }
@@ -73,6 +74,8 @@ public class Invocation : MonoBehaviour {
 
     void CreateModel(SpellManager.spellType type, GameObject go)
     {
+
+
         GameObject model = null;
 
         switch (type)
@@ -81,10 +84,10 @@ public class Invocation : MonoBehaviour {
                 
                 break;
             case SpellManager.spellType.PLANTE:
-                
+                model = SpellManager.Instance.GetPlante1Model();
                 break;
             case SpellManager.spellType.PLANTE2:
-                
+                model = SpellManager.Instance.GetPlante2Model();
                 break;
             case SpellManager.spellType.BUISSON:
                 model = SpellManager.Instance.GetBuissonModel();
