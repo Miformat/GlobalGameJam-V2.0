@@ -4,9 +4,10 @@ using System.Collections;
 public class colorScript : MonoBehaviour {
 
 	public float radius;
+	TrackManager TM;
 	// Use this for initialization
 	void Start () {
-	
+		TM = FindObjectOfType<TrackManager>();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +30,7 @@ public class colorScript : MonoBehaviour {
 				Material mat = go.GetComponent<MeshRenderer>().material;
 				if (mat)
 				{
+					TM.isColor = true;
 					r = Random.Range (0.0f,1.0f);
 					g = Random.Range (0.0f,1.0f);
 					b = Random.Range (0.0f,1.0f);
