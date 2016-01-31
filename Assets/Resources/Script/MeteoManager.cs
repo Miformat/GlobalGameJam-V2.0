@@ -69,6 +69,7 @@ public class MeteoManager : MonoBehaviour {
 
         foreach (Material m in materials)
         {
+            Debug.Log(m.name);
             m.SetFloat("_Snow", 0f);
         }
 
