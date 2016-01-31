@@ -300,7 +300,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Assecher()
     {
-		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, false);
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.WATER, false);
     }
 
     private void AuroreBoreale()
@@ -330,7 +330,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Fleurir()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<Interaction>().Interact(Interaction.interactionType.FLOWER, true);
     }
 
     private void Voler()

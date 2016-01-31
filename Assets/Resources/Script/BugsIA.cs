@@ -4,13 +4,11 @@ using System.Collections;
 public class BugsIA : MonoBehaviour {
 	
 	public float speed;
-	Vector3 startPos;
 	Vector3 target;
 	float timer;
 	int sec;
 
 	void Start () {
-		startPos = this.gameObject.transform.position;
 		target = ResetTarget();
 		sec = ResetSec();
 	}

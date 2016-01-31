@@ -12,7 +12,6 @@ public class BirdAi : MonoBehaviour {
 	Vector3 endPos;
 	Transform playerPos;
 	float dist;
-	float speed;
 
 	enum flyingState
 	{
@@ -27,7 +26,6 @@ public class BirdAi : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		state = flyingState.LANDED;
-		speed = 0.1f;
 		startPos = this.gameObject.transform.position;
 		playerPos = GameObject.FindGameObjectWithTag("Player").transform;
 	}

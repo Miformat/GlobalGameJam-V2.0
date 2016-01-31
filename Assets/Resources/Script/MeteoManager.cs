@@ -49,8 +49,13 @@ public class MeteoManager : MonoBehaviour {
 
     TrackManager tM;
 
+    GameObject[] waterZones;
+
     // Use this for initialization
     void Start () {
+
+        waterZones = GameObject.FindGameObjectsWithTag("InteractableWater");
+
         currentWeather = Weather.CLEAR;
         day = true;
 
@@ -78,7 +83,6 @@ public class MeteoManager : MonoBehaviour {
 
     public void SwitchWeather(Weather w)
     {
-        Weather oldWeather = currentWeather;
         currentWeather = w;
         
         switch (currentWeather)
@@ -86,20 +90,31 @@ public class MeteoManager : MonoBehaviour {
             case Weather.CLEAR:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 0f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 0f));
+                SetSnow(false);
                 break;
             case Weather.RAIN:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 1f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 0f));
+                SetSnow(false);
                 break;
             case Weather.SNOW:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 1f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 1f));
+                SetSnow(true);
                 break;
         }
 
         tM.meteo = currentWeather;
 
         UpdateColor();
+    }
+
+    public void SetSnow(bool b)
+    {
+        foreach (GameObject waterZone in waterZones)
+        {
+            waterZone.GetComponent<Collider>().isTrigger = !b;
+        }
     }
 
     public void SetDay(bool b)

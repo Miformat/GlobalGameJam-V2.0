@@ -10,10 +10,14 @@ public class Interactable : MonoBehaviour {
 
     public bool openableIsOpen = false;
 
-    public bool isDead = true;
+    public bool noLeaves = true;
+
+    public bool noFlower = true;
 
     // Use this for initialization
     void Start () {
+        GetComponent<Renderer>().material.SetFloat("_Flowers", 0f);
+        GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
     }
 	
 	// Update is called once per frame
@@ -21,7 +25,7 @@ public class Interactable : MonoBehaviour {
 	
 	}
 
-    public void ChangeState(bool b)
+    public void ChangeState(Interaction.interactionType type, bool b)
     {
         Debug.Log(tag);
         switch (tag)
@@ -39,7 +43,14 @@ public class Interactable : MonoBehaviour {
                 StartCoroutine(Rock(b));
                 break;
             case "DeadTree":
-                StartCoroutine(Leaves(b));
+                if(type == Interaction.interactionType.LEAVES)
+                {
+                    StartCoroutine(Leaves(b));
+                }
+                else
+                {
+                    StartCoroutine(Flower(b));
+                }
                 break;
         }
     }
@@ -127,7 +138,7 @@ public class Interactable : MonoBehaviour {
 
     IEnumerator Leaves(bool b)
     {
-        if (b == true && isDead == true)
+        if (b == true && noLeaves == true)
         {
             while (GetComponent<Renderer>().material.GetFloat("_Leaves") < 1f)
             {
@@ -136,7 +147,22 @@ public class Interactable : MonoBehaviour {
 
             }
 
-            isDead = false;
+            noLeaves = false;
+        }
+    }
+
+    IEnumerator Flower(bool b)
+    {
+        if (b == true && noFlower== true)
+        {
+            while (GetComponent<Renderer>().material.GetFloat("_Flowers") < 1f)
+            {
+                GetComponent<Renderer>().material.SetFloat("_Flowers", GetComponent<Renderer>().material.GetFloat("_Flowers") + 0.01f);
+                yield return new WaitForSeconds(0.01f);
+
+            }
+
+            noFlower = false;
         }
     }
 }

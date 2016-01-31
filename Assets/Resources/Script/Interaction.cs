@@ -12,7 +12,8 @@ public class Interaction : MonoBehaviour {
         LIGHT,
         WATER,
         BIGROCK,
-        LEAVES
+        LEAVES,
+        FLOWER
     }
 
     public static Dictionary<interactionType, string> tags;
@@ -25,6 +26,7 @@ public class Interaction : MonoBehaviour {
         tags[interactionType.WATER] = "InteractableWater";
         tags[interactionType.BIGROCK] = "InteractableRock";
         tags[interactionType.LEAVES] = "DeadTree";
+        tags[interactionType.FLOWER] = "DeadTree";
     }
 	
 	// Update is called once per frame
@@ -43,10 +45,10 @@ public class Interaction : MonoBehaviour {
 
         foreach (Collider col in hitColliders)
         {
-            //Debug.Log(col.tag + " | " + tags[type]);
+            Debug.Log(col.tag + " | " + tags[type]);
             if(col.tag == tags[type])
             {
-                col.GetComponent<Interactable>().ChangeState(state);
+                col.GetComponent<Interactable>().ChangeState(type, state);
             }
         }
     }
