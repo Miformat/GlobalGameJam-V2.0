@@ -14,10 +14,23 @@ public class Interactable : MonoBehaviour {
 
     public bool noFlower = true;
 
+    public Material waterMat;
+
     // Use this for initialization
-    void Start () {
-        GetComponent<Renderer>().material.SetFloat("_Flowers", 0f);
-        GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
+    void Start() {
+
+        if (tag == "DeadTree")
+        {
+
+            GetComponent<Renderer>().material.SetFloat("_Flowers", 0f);
+            GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
+        }
+
+        if (tag == "InteractableWater")
+        {
+            GetComponent<Renderer>().material = waterMat;
+        }
+
     }
 	
 	// Update is called once per frame
