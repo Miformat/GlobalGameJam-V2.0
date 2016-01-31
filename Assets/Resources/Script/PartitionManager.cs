@@ -180,7 +180,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 2;
 				IDSTAR = 3;
                 Couleur();
-			Debug.Log("couleur");
 			break;
 		case "pluie":
 				IDCONST = 4;
