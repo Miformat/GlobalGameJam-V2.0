@@ -25,18 +25,22 @@ public class noteParticleScript : MonoBehaviour {
 			case "z":
 				go = Instantiate(partNoteZ);
 				go.transform.parent = this.gameObject.transform;
+				go.transform.localPosition = Vector3.zero;
 				break;
 			case "q":
 				go = Instantiate(partNoteQ);
 				go.transform.parent = this.gameObject.transform;
+				go.transform.localPosition = Vector3.zero;
 				break;
 			case "s":
 				go = Instantiate(partNoteS);
 				go.transform.parent = this.gameObject.transform;
+				go.transform.localPosition = Vector3.zero;
 				break;
 			case "d":
 				go = Instantiate(partNoteD);
 				go.transform.parent = this.gameObject.transform;
+				go.transform.localPosition = Vector3.zero;
 				break;
 			default:
 				break;

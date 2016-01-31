@@ -66,7 +66,7 @@ public class Invocation : MonoBehaviour {
 
             if (!canExist)
             {
-                Debug.Log("okokokokokkokokok");
+                //Debug.Log("okokokokokkokokok");
                 Destroy(go);
             }
         }
