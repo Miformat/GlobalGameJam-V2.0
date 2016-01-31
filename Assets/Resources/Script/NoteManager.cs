@@ -116,6 +116,7 @@ public class NoteManager : MonoBehaviour {
 		}
 		toPop = Instantiate (toPop, player.transform.position, Quaternion.identity) as GameObject;
 		toPop.transform.parent = papaNote.transform;
+		player.GetComponent<noteParticleScript> ().playParticle (str);
 	}
 
 	void executePartition()
