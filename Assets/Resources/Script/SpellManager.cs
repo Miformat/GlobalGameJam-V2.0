@@ -39,7 +39,10 @@ public class SpellManager : MonoBehaviour {
 
     public GameObject elementPrefab;
     public GameObject plantePrefab;
+    public List<GameObject> planteModels;
+
     public GameObject plante2Prefab;
+    public List<GameObject> plante2Models;
 
     public GameObject buissonPrefab;
     public List<GameObject> buissonModels;
@@ -109,5 +112,15 @@ public class SpellManager : MonoBehaviour {
     public GameObject GetRockModel()
     {
         return rockModels[Random.Range(0, rockModels.Count)];
+    }
+
+    public GameObject GetPlante1Model()
+    {
+        return planteModels[Random.Range(0, planteModels.Count)];
+    }
+
+    public GameObject GetPlante2Model()
+    {
+        return plante2Models[Random.Range(0, plante2Models.Count)];
     }
 }

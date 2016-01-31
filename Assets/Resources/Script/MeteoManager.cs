@@ -39,10 +39,12 @@ public class MeteoManager : MonoBehaviour {
     public Color colorDay = new Color(1f, 0.86f, 0.82f);
     public Color colorDayRain = new Color(0.62f, 0.81f, 0.83f);
     public Color colorDaySnow = new Color(0.83f, 0.76f, 1f);
+    public Color colorDayOther = new Color(0.83f, 0.76f, 1f);
 
     public Color colorNight = new Color(0.4f, 0.22f, 0.56f);
     public Color colorNightRain = new Color(1f, 0.86f, 0.82f);
     public Color colorNightSnow = new Color(1f, 0.86f, 0.82f);
+    public Color colorNightOther = new Color(1f, 0.86f, 0.82f);
 
     GameObject rain;
     GameObject snow;
@@ -64,12 +66,13 @@ public class MeteoManager : MonoBehaviour {
         skybox.SetFloat("_DayToNight", 0f);
         skybox.SetFloat("_RainToSnow", 0f);
         skybox.SetFloat("_NormalToRainSnow", 0f);
+        skybox.SetFloat("_RainSnowToSpecial", 0f);
 
         mainLight = FindObjectOfType<Light>();
 
         foreach (Material m in materials)
         {
-            Debug.Log(m.name);
+
             m.SetFloat("_Snow", 0f);
         }
 
@@ -91,16 +94,25 @@ public class MeteoManager : MonoBehaviour {
             case Weather.CLEAR:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 0f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 0f));
+                StartCoroutine(ChangeSkyboxValue("_RainSnowToSpecial", 0f));
                 SetSnow(false);
                 break;
             case Weather.RAIN:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 1f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 0f));
+                StartCoroutine(ChangeSkyboxValue("_RainSnowToSpecial", 0f));
                 SetSnow(false);
                 break;
             case Weather.SNOW:
                 StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 1f));
                 StartCoroutine(ChangeSkyboxValue("_RainToSnow", 1f));
+                StartCoroutine(ChangeSkyboxValue("_RainSnowToSpecial", 0f));
+                SetSnow(true);
+                break;
+            case Weather.OTHER:
+                StartCoroutine(ChangeSkyboxValue("_NormalToRainSnow", 1f));
+                StartCoroutine(ChangeSkyboxValue("_RainToSnow", 0f));
+                StartCoroutine(ChangeSkyboxValue("_RainSnowToSpecial", 1f));
                 SetSnow(true);
                 break;
         }
@@ -147,6 +159,11 @@ public class MeteoManager : MonoBehaviour {
                 rain.SetActive(false);
                 snow.SetActive(true);
                 mainLight.color = day ? colorDaySnow : colorNightSnow;
+                break;
+            case Weather.OTHER:
+                rain.SetActive(false);
+                snow.SetActive(false);
+                mainLight.color = day ? colorDayOther : colorNightOther;
                 break;
 
         }

@@ -24,12 +24,13 @@ public class colorScript : MonoBehaviour {
 		float b;
 		Color newColor;
 		foreach(GameObject go in allAround)
-		{
-			if(Vector3.Distance(this.gameObject.transform.position, go.transform.position) < radius && go.layer == 8)
-			{
-				Material mat = go.GetComponent<MeshRenderer>().material;
+        {
+            if (Vector3.Distance(this.gameObject.transform.position, go.transform.position) < radius && go.layer == 8)
+            {
+                Material mat = go.GetComponent<MeshRenderer>().material;
 				if (mat)
 				{
+
 					TM.isColor = true;
 					r = Random.Range (0.0f,1.0f);
 					g = Random.Range (0.0f,1.0f);
