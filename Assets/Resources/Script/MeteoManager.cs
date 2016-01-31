@@ -46,6 +46,8 @@ public class MeteoManager : MonoBehaviour {
     public Color colorNightSnow = new Color(1f, 0.86f, 0.82f);
     public Color colorNightOther = new Color(1f, 0.86f, 0.82f);
 
+    public GameObject aurore;
+
     GameObject rain;
     GameObject snow;
     GameObject other;
@@ -85,6 +87,8 @@ public class MeteoManager : MonoBehaviour {
         other.SetActive(false);
 
         tM = FindObjectOfType<TrackManager>();
+
+        SetAurore(false);
     }
 
     public void SwitchWeather(Weather w)
@@ -148,6 +152,7 @@ public class MeteoManager : MonoBehaviour {
         switch (currentWeather)
         {
             case Weather.CLEAR:
+                SetAurore(false);
                 rain.SetActive(false);
                 snow.SetActive(false);
                 other.SetActive(false);
@@ -218,6 +223,11 @@ public class MeteoManager : MonoBehaviour {
                 yield return new WaitForSeconds(0.01f);
             }
         }
+    }
+
+    public void SetAurore(bool b)
+    {
+        aurore.SetActive(b);
     }
 
 }

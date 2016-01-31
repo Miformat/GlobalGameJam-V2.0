@@ -254,7 +254,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 5;
 				IDSTAR = 4;
                 Credit();
-			Debug.Log("credit");
 			break;
 		case "effacer":
 				IDCONST = 2;
@@ -289,7 +288,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Credit()
     {
-        throw new NotImplementedException();
+        FindObjectOfType<checkConst>().isOk = true;
     }
 
     private void Jour()
@@ -304,7 +303,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void AuroreBoreale()
     {
-        throw new NotImplementedException();
+        MeteoManager.Instance.SetAurore(true);
     }
 
     private void Allumer()
@@ -344,7 +343,7 @@ public class PartitionManager : MonoBehaviour {
 
     private void Boussole()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     private void Neige()

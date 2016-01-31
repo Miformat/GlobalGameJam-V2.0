@@ -7,6 +7,8 @@ public class Underwater : MonoBehaviour {
 	
 	//Define variable
 	int underwaterLevel = -16;
+    GameObject lac;
+    bool isWater;
 
 	//The scene's default fog settings
 	private bool defaultFog;
@@ -17,6 +19,7 @@ public class Underwater : MonoBehaviour {
 	public Color underWaterColor;
 	
 	void Start () {
+        lac = GameObject.Find("Lac");
 		//Set the background color
 		defaultFog = RenderSettings.fog;
 		defaultFogColor = RenderSettings.fogColor;
@@ -26,7 +29,8 @@ public class Underwater : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (transform.position.y < underwaterLevel)
+        isWater = lac.GetComponent<Interactable>().waterIsUp;
+		if (transform.position.y < underwaterLevel && isWater)
 		{
 			RenderSettings.fog = true;
 			/*RenderSettings.fogColor = underWaterColor;//new Color(0, 0.4f, 0.7f, 0.6f);
