@@ -15,7 +15,7 @@ public class BugsIA : MonoBehaviour {
 	
 	void Update () {
 		timer += Time.deltaTime;
-		if(timer > sec || transform.position.y < 0.5f)
+		if(timer > sec || transform.position.y < 2f)
 		{
 			target = ResetTarget();
 			sec = ResetSec();
@@ -28,7 +28,7 @@ public class BugsIA : MonoBehaviour {
 		float xGo = Random.Range (-2, 2);
 		float yGo = Random.Range (-2, 2);
 		float zGo = Random.Range (-2, 2);
-		if (transform.position.y < 0.5f && yGo < 0){yGo *= -1;}
+		if (transform.position.y < 2f && yGo < 0){yGo *= -1;}
 		Vector3 toReturn = new Vector3(xGo, yGo, zGo);
 		return toReturn;
 	}
