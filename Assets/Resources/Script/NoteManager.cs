@@ -26,6 +26,7 @@ public class NoteManager : MonoBehaviour {
 	int index;
 	int sizeTab;
 	GameObject player;
+	GameObject papaNote;
 
 	GameObject notez;
 	GameObject noteq;
@@ -50,6 +51,8 @@ public class NoteManager : MonoBehaviour {
 		note1 = Resources.Load ("Prefab/Note-1") as GameObject;
 		note2 = Resources.Load ("Prefab/Note-2") as GameObject;
 		player = GameObject.FindGameObjectWithTag ("Player");
+		papaNote = new GameObject();
+		papaNote.name = "PapaNote";
 		sizeTab = 0;
 		timer = 0;
 		index = 0;
@@ -111,12 +114,18 @@ public class NoteManager : MonoBehaviour {
 			else{toPop = note2;}
 			break;
 		}
-		Instantiate (toPop, player.transform.position, Quaternion.identity);
+		toPop = Instantiate (toPop, player.transform.position, Quaternion.identity) as GameObject;
+		toPop.transform.parent = papaNote.transform;
 	}
 
 	void executePartition()
 	{
 		bool match;
+		foreach(Transform TS in papaNote.GetComponentsInChildren<Transform>())
+		{
+			if (TS != papaNote.transform){TS.GetComponent<notePopScript>().sizeDown = true;}
+		}
+
 		foreach (string[] str in dico) 
 		{
 			match = true;
