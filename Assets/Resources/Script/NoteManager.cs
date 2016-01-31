@@ -39,6 +39,8 @@ public class NoteManager : MonoBehaviour {
 	string[][] dico;
 	PartitionManager partition;
 
+    CharacterController cC;
+
 	// Use this for initialization
 	void Start () {
 		notez = Resources.Load ("Prefab/Note-z") as GameObject;
@@ -56,6 +58,8 @@ public class NoteManager : MonoBehaviour {
 		partition = GameObject.FindGameObjectWithTag ("Partition").GetComponent<PartitionManager>();
 
         animator = FindObjectOfType<PlayerController>().animator;
+
+        cC = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
     }
 	
 	// Update is called once per frame
@@ -68,7 +72,7 @@ public class NoteManager : MonoBehaviour {
             animator.SetBool("sing", false);
             executePartition();
 		}
-		if (Input.anyKeyDown) 
+		if (Input.anyKeyDown && cC.isGrounded) 
 		{
 			keyPressed = Input.inputString;
 			if (keyPressed != "" && keyPressed != null)
