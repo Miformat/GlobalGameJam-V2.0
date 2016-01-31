@@ -3,35 +3,19 @@ using System.Collections;
 
 public class noteParticleScript : MonoBehaviour {
 
-	GameObject partNoteZ;
-	GameObject partNoteQ;
-	GameObject partNoteS;
-	GameObject partNoteD;
-	float timer;
+	public GameObject partNoteZ;
+	public GameObject partNoteQ;
+	public GameObject partNoteS;
+	public GameObject partNoteD;
+	GameObject go;
 
 	// Use this for initialization
 	void Start () {
-		partNoteZ = GameObject.Find ("PartNoteZ");
-		partNoteQ = GameObject.Find ("PartNoteQ");
-		partNoteS = GameObject.Find ("PartNoteS");
-		partNoteD = GameObject.Find ("PartNoteD");
-		partNoteZ.SetActive (false);
-		partNoteQ.SetActive (false);
-		partNoteS.SetActive (false);
-		partNoteD.SetActive (false);
-		timer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
-		if (timer < 0) 
-		{
-			partNoteZ.SetActive (false);
-			partNoteQ.SetActive (false);
-			partNoteS.SetActive (false);
-			partNoteD.SetActive (false);
-		}
+
 	}
 
 	public void playParticle(string ID)
@@ -39,20 +23,23 @@ public class noteParticleScript : MonoBehaviour {
 		switch(ID)
 		{
 			case "z":
-				partNoteZ.SetActive (true);
+				go = Instantiate(partNoteZ);
+				go.transform.parent = this.gameObject.transform;
 				break;
 			case "q":
-				partNoteQ.SetActive (true);
+				go = Instantiate(partNoteQ);
+				go.transform.parent = this.gameObject.transform;
 				break;
 			case "s":
-				partNoteS.SetActive (true);
+				go = Instantiate(partNoteS);
+				go.transform.parent = this.gameObject.transform;
 				break;
 			case "d":
-				partNoteD.SetActive (true);
+				go = Instantiate(partNoteD);
+				go.transform.parent = this.gameObject.transform;
 				break;
 			default:
 				break;
 		}
-		timer = 1.5f;
 	}
 }
