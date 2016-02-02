@@ -74,7 +74,7 @@ public class TrackManager : MonoBehaviour {
 		foundTree = foundBush = foundRock = foundBird = foundButterfly = foundDragonfly = foundPlant1 = foundPlant2 = false;
 		foreach(Collider col in hitColliders)
 		{
-            Debug.Log(col.tag + " " + col.name);
+            //Debug.Log(col.tag + " " + col.name);
 
 			switch(col.tag)
 			{

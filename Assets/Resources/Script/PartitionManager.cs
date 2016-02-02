@@ -195,7 +195,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 5;
 				IDSTAR = 2;
                 Boussole();
-			Debug.Log("boussole");
 			break;
 		case "meteoClaire":
 				IDCONST = 4;
@@ -211,13 +210,11 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 2;
 				IDSTAR = 4;
                 Fleurir();
-			Debug.Log("fleurir");
 			break;
 		case "feuillir":
 				IDCONST = 2;
 				IDSTAR = 5;
                 Feuillir();
-			Debug.Log("feuillir");
 			break;
 		case "eteindre":
 				IDCONST = 3;
@@ -238,7 +235,6 @@ public class PartitionManager : MonoBehaviour {
 				IDCONST = 4;
 				IDSTAR = 5;
                 AuroreBoreale();
-			Debug.Log("auroreBoreale");
 			break;
 		case "assecher":
 				IDCONST = 3;

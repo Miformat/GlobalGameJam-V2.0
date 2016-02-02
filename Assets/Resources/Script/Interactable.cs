@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour {
 
     public void ChangeState(Interaction.interactionType type, bool b)
     {
-        Debug.Log(tag);
+        //Debug.Log(tag);
         switch (tag)
         {
             case "Openable":
@@ -110,7 +110,7 @@ public class Interactable : MonoBehaviour {
 
     IEnumerator Water(bool b)
     {
-        Debug.Log(b +" =? "+waterIsUp);
+        //Debug.Log(b +" =? "+waterIsUp);
         if (b != waterIsUp)
         {
             float originLevel = transform.position.y;
