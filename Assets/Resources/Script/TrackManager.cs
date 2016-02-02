@@ -74,6 +74,8 @@ public class TrackManager : MonoBehaviour {
 		foundTree = foundBush = foundRock = foundBird = foundButterfly = foundDragonfly = foundPlant1 = foundPlant2 = false;
 		foreach(Collider col in hitColliders)
 		{
+            Debug.Log(col.tag + " " + col.name);
+
 			switch(col.tag)
 			{
 				case "Tree":
@@ -108,8 +110,8 @@ public class TrackManager : MonoBehaviour {
 	{
 		int rnd = Random.Range (0,3);
 		if (foundTree){ PlaySoundOnPlayer(arbre[rnd]);}
-		if (foundRock){ PlaySoundOnPlayer(buisson[rnd]);}
-		if (foundBush){ PlaySoundOnPlayer(caillou[rnd]);}
+		if (foundBush) { PlaySoundOnPlayer(buisson[rnd]);}
+		if (foundRock) { PlaySoundOnPlayer(caillou[rnd]);}
 		if (foundBird){ PlaySoundOnPlayer(oiseau[rnd]);}
 		if (foundButterfly){ PlaySoundOnPlayer(papillon[rnd]);}
 		if (foundDragonfly){ PlaySoundOnPlayer(luciole[rnd]);}

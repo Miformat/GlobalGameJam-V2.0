@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NoteManager : MonoBehaviour {
 
@@ -42,9 +43,18 @@ public class NoteManager : MonoBehaviour {
 
     CharacterController cC;
 
+    List<string> autorizedNotes;
+
 	// Use this for initialization
 	void Start () {
-		notez = Resources.Load ("Prefab/Note-z") as GameObject;
+
+        autorizedNotes = new List<string>();
+        autorizedNotes.Add("z");
+        autorizedNotes.Add("q");
+        autorizedNotes.Add("s");
+        autorizedNotes.Add("d");
+
+        notez = Resources.Load ("Prefab/Note-z") as GameObject;
 		noteq = Resources.Load ("Prefab/Note-q") as GameObject;
 		notes = Resources.Load ("Prefab/Note-s") as GameObject;
 		noted = Resources.Load ("Prefab/Note-d") as GameObject;
@@ -78,7 +88,7 @@ public class NoteManager : MonoBehaviour {
 		if (Input.anyKeyDown && cC.isGrounded) 
 		{
 			keyPressed = Input.inputString;
-			if (keyPressed != "" && keyPressed != null)
+			if (/*keyPressed != "" && keyPressed != null*/ autorizedNotes.Contains(keyPressed))
             {
                 animator.SetLayerWeight(1, 1);
                 animator.SetBool("sing", true);

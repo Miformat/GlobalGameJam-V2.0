@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour {
             GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
         }
 
-        if (tag == "InteractableWater")
+        if (tag == "InteractableWater" || tag == "DeadTree")
         {
             GetComponent<Renderer>().material = waterMat;
         }
