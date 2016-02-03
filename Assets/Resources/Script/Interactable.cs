@@ -21,7 +21,6 @@ public class Interactable : MonoBehaviour {
 
         if (tag == "DeadTree")
         {
-
             GetComponent<Renderer>().material.SetFloat("_Flowers", 0f);
             GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
         }
