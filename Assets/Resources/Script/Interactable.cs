@@ -18,16 +18,16 @@ public class Interactable : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        
+        if (tag == "InteractableWater" || tag == "DeadTree")
+        {
+            GetComponent<Renderer>().material = waterMat;
+        }
 
         if (tag == "DeadTree")
         {
             GetComponent<Renderer>().material.SetFloat("_Flowers", 0f);
             GetComponent<Renderer>().material.SetFloat("_Leaves", 0f);
-        }
-
-        if (tag == "InteractableWater" || tag == "DeadTree")
-        {
-            GetComponent<Renderer>().material = waterMat;
         }
 
     }
