@@ -43,6 +43,8 @@ public class SpellManager : MonoBehaviour {
 
     public GameObject plante2Prefab;
     public List<GameObject> plante2Models;
+    
+    public List<GameObject> nenupharModels;
 
     public GameObject buissonPrefab;
     public List<GameObject> buissonModels;
@@ -61,7 +63,7 @@ public class SpellManager : MonoBehaviour {
     public GameObject[] GetPrefab(spellType type)
     {
         GameObject[] tab = new GameObject[2];
-
+        
         switch (type)
         {
 			case spellType.ELEMENT:
@@ -122,5 +124,10 @@ public class SpellManager : MonoBehaviour {
     public GameObject GetPlante2Model()
     {
         return plante2Models[Random.Range(0, plante2Models.Count)];
+    }
+
+    public GameObject GetNenupharModel()
+    {
+        return nenupharModels[Random.Range(0, nenupharModels.Count)];
     }
 }

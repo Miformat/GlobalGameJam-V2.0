@@ -55,18 +55,22 @@ public class Invocation : MonoBehaviour {
             Collider[] hitColliders = Physics.OverlapSphere(center, detectionRadius);
 
             bool canExist = true;
+            bool nearGround = false;
 
             foreach (Collider col in hitColliders)
             {
-                if (col.tag != "Ground" && col.gameObject != go)
+                if (col.tag != "Ground" && col.gameObject != go && col.tag != "InteractableWater")
                 {
                     canExist = false;
                 }
+                else if(col.tag == "Ground")
+                {
+                    nearGround = true;
+                }
             }
 
-            if (!canExist)
+            if (!canExist || !nearGround)
             {
-                //Debug.Log("okokokokokkokokok");
                 Destroy(go);
             }
         }
@@ -77,6 +81,20 @@ public class Invocation : MonoBehaviour {
 
 
         GameObject model = null;
+        
+        Vector3 center = go.transform.position;
+
+        Collider[] hitColliders = Physics.OverlapSphere(center, .35f);
+        
+        bool nearWater = false;
+
+        foreach (Collider col in hitColliders)
+        {
+            if (col.tag == "InteractableWater")
+            {
+                nearWater = true;
+            }
+        }
 
         switch (type)
         {
@@ -84,13 +102,34 @@ public class Invocation : MonoBehaviour {
                 
                 break;
             case SpellManager.spellType.PLANTE:
-                model = SpellManager.Instance.GetPlante1Model();
+                if(nearWater)
+                {
+                    model = SpellManager.Instance.GetNenupharModel();
+                }
+                else
+                {
+                    model = SpellManager.Instance.GetPlante1Model();
+                }
                 break;
             case SpellManager.spellType.PLANTE2:
-                model = SpellManager.Instance.GetPlante2Model();
+                if (nearWater)
+                {
+                    model = SpellManager.Instance.GetNenupharModel();
+                }
+                else
+                {
+                    model = SpellManager.Instance.GetPlante2Model();
+                }
                 break;
             case SpellManager.spellType.BUISSON:
-                model = SpellManager.Instance.GetBuissonModel();
+                if (nearWater)
+                {
+                    model = SpellManager.Instance.GetNenupharModel();
+                }
+                else
+                {
+                    model = SpellManager.Instance.GetBuissonModel();
+                }
                 break;
             case SpellManager.spellType.ROCK:
                 model = SpellManager.Instance.GetRockModel();
