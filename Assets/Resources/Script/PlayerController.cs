@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 moveDirection = Vector3.zero;
 	Vector3 direction;
     
+	[HideInInspector]public Vector3 startPos;
     [HideInInspector]public Animator animator;
 
     public float flyDuration = 3f;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     void Awake()
     {
+		startPos = this.gameObject.transform.position;
         animator = GetComponentInChildren<Animator>();
         model = animator.gameObject;
 

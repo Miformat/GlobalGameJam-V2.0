@@ -63,7 +63,7 @@ public class Invocation : MonoBehaviour {
                 {
                     canExist = false;
                 }
-                else if(col.tag == "Ground")
+				else if(col.tag == "Ground" || col.tag == "InteractableWater")
                 {
                     nearGround = true;
                 }
@@ -88,11 +88,14 @@ public class Invocation : MonoBehaviour {
         
         bool nearWater = false;
 
+		BoxCollider waterCol = null;
+
         foreach (Collider col in hitColliders)
         {
             if (col.tag == "InteractableWater")
             {
                 nearWater = true;
+				waterCol = col as BoxCollider;
             }
         }
 
@@ -105,6 +108,7 @@ public class Invocation : MonoBehaviour {
                 if(nearWater)
                 {
                     model = SpellManager.Instance.GetNenupharModel();
+					go.transform.position = new Vector3(go.transform.position.x,waterCol.transform.position.y + waterCol.size.y / 2 -1f,go.transform.position.z);
                 }
                 else
                 {
@@ -114,8 +118,9 @@ public class Invocation : MonoBehaviour {
             case SpellManager.spellType.PLANTE2:
                 if (nearWater)
                 {
-                    model = SpellManager.Instance.GetNenupharModel();
-                }
+				model = SpellManager.Instance.GetNenupharModel();
+				go.transform.position = new Vector3(go.transform.position.x,waterCol.transform.position.y + waterCol.size.y / 2 -1f,go.transform.position.z);
+			}
                 else
                 {
                     model = SpellManager.Instance.GetPlante2Model();
@@ -124,8 +129,9 @@ public class Invocation : MonoBehaviour {
             case SpellManager.spellType.BUISSON:
                 if (nearWater)
                 {
-                    model = SpellManager.Instance.GetNenupharModel();
-                }
+				model = SpellManager.Instance.GetNenupharModel();
+				go.transform.position = new Vector3(go.transform.position.x,waterCol.transform.position.y + waterCol.size.y / 2-1f,go.transform.position.z);
+			}
                 else
                 {
                     model = SpellManager.Instance.GetBuissonModel();
