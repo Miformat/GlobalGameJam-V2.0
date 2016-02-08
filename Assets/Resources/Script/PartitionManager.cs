@@ -145,6 +145,9 @@ public class PartitionManager : MonoBehaviour {
 				IDSTAR = 2;
                 Fermer();
 			break;
+		case "restart":
+			Restart();
+			break;
 		case "arbres":
 				IDCONST = 1;
 				IDSTAR = 7;
@@ -395,6 +398,11 @@ public class PartitionManager : MonoBehaviour {
     {
 		FindObjectOfType<Interaction>().Interact(Interaction.interactionType.OPEN, false);
     }
+
+	private void Restart()
+	{
+		Application.LoadLevel ("MainScene");
+	}
 
     private void Ouvrir()
     {

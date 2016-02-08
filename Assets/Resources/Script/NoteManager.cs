@@ -54,6 +54,13 @@ public class NoteManager : MonoBehaviour {
         autorizedNotes.Add("s");
         autorizedNotes.Add("d");
 
+
+		autorizedNotes.Add("o");
+		autorizedNotes.Add("v");
+		autorizedNotes.Add("e");
+		autorizedNotes.Add("r");
+
+
         notez = Resources.Load ("Prefab/Note-z") as GameObject;
 		noteq = Resources.Load ("Prefab/Note-q") as GameObject;
 		notes = Resources.Load ("Prefab/Note-s") as GameObject;

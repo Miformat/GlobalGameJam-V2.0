@@ -28,6 +28,8 @@ public class DicoSong : MonoBehaviour {
             new string[]{"s", "q", "d" , "ouvrir"},
             new string[]{"d", "q", "s" , "fermer"},
 
+			new string[]{"o", "v", "e" , "r" , "restart"},
+
             new string[]{"z", "z", "q" , "q" , "arbres"},
             new string[]{"q", "q", "z" , "z" , "destroyArbres"},
             new string[]{"z", "q", "z" , "d" , "buissons"},
